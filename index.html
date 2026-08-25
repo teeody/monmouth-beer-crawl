@@ -356,6 +356,31 @@
     color: var(--cream-dim);
   }
 
+  .stop-hours {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(212,146,11,0.06);
+    border: 1px solid rgba(212,146,11,0.1);
+    border-radius: 10px;
+    font-size: 0.78rem;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+
+  .stop-hours .hours-icon {
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    margin-top: 1px;
+  }
+
+  .stop-hours strong {
+    color: var(--amber-light);
+    font-weight: 600;
+  }
+
   /* ── ROUTE BETWEEN STOPS ── */
   .route-connector {
     display: flex;
@@ -541,6 +566,176 @@
     transform: translateY(0);
   }
 
+  /* ── SIGN UP ── */
+  .signup-section {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(212,146,11,0.08) 0%, transparent 60%),
+      var(--dark-surface);
+    border-top: 1px solid rgba(212,146,11,0.15);
+    border-bottom: 1px solid rgba(212,146,11,0.15);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .signup-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .signup-section .section-label {
+    text-align: center;
+  }
+
+  .signup-section .section-title {
+    text-align: center;
+  }
+
+  .signup-desc {
+    color: var(--cream-dim);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .signup-form input,
+  .signup-form select {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--dark-card);
+    border: 1px solid rgba(212,146,11,0.2);
+    border-radius: 10px;
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .signup-form input::placeholder {
+    color: rgba(201,184,150,0.5);
+  }
+
+  .signup-form input:focus,
+  .signup-form select:focus {
+    border-color: var(--amber);
+  }
+
+  .signup-form select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23c9b896' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .signup-form select option {
+    background: var(--dark-card);
+    color: var(--cream);
+  }
+
+  .signup-btn {
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--amber) 0%, var(--amber-dark) 100%);
+    border: none;
+    border-radius: 10px;
+    color: var(--dark);
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 4px;
+  }
+
+  .signup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(212,146,11,0.3);
+  }
+
+  .signup-btn:active {
+    transform: translateY(0);
+  }
+
+  .signup-note {
+    font-size: 0.72rem;
+    color: rgba(201,184,150,0.4);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .signup-success {
+    display: none;
+    padding: 24px;
+    background: rgba(76,175,80,0.1);
+    border: 1px solid rgba(76,175,80,0.3);
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .signup-success .success-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .signup-success h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: var(--green-trail);
+    margin-bottom: 6px;
+  }
+
+  .signup-success p {
+    color: var(--cream-dim);
+    font-size: 0.88rem;
+  }
+
+  .counter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(212,146,11,0.1);
+  }
+
+  .counter-item {
+    text-align: center;
+  }
+
+  .counter-item .count {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .counter-item .count-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--cream-dim);
+    margin-top: 4px;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
     .hero-stats { gap: 24px; }
@@ -550,6 +745,9 @@
     #map { height: 400px; }
     .map-legend { display: none; }
     section { padding: 60px 16px; }
+    .form-row { grid-template-columns: 1fr; }
+    .counter-bar { gap: 20px; }
+    .counter-item .count { font-size: 1.6rem; }
   }
 </style>
 </head>
@@ -634,6 +832,10 @@
         <h3>Birdsmouth Beer</h3>
         <div class="address">📍 675 Oceanport Way, Oceanport, NJ 07757</div>
         <div class="desc">Home base. This Oceanport brewery is the launchpad for the annual Bikes & Beers Monmouth event. Open-air taproom, killer craft lineup, and the perfect place to lock your bike for the return trip. Fuel up here — you've got 33 miles ahead.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Thu 4–8pm · Fri 4–9pm · Sat 12–9pm · Sun 12–7pm<br>Closed Mon–Wed</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">Craft Taproom</span>
           <span class="highlight-chip">Bike Parking</span>
@@ -656,6 +858,10 @@
         <h3>Nip N Tuck Bar & Grill</h3>
         <div class="address">📍 23 Norwood Ave, Long Branch, NJ 07740</div>
         <div class="desc">A Long Branch institution for 50+ years. Female-run, zero scene, and exactly the kind of place you stumble into and never want to leave. Grilled Cheese of the Week from a rotation of 50+. Bottomless brunch bloody marys. Beer garden in the back.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Daily 11am–2am<br>Happy Hour Mon–Fri 3–6pm</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">50+ Year Dive</span>
           <span class="highlight-chip">Beer Garden</span>
@@ -679,6 +885,10 @@
         <h3>Bond Street Bar</h3>
         <div class="address">📍 208 Bond Street, Asbury Park, NJ 07712</div>
         <div class="desc">Asbury's living room since 2009. Simple burgers, reasonably priced drinks, and an atmosphere that swings between "good time" and "party." Proud LGBTQ+ history, music-forward, and a crowd of fishermen, lifeguards, and lifelong locals. Bike corrals right on Bond St.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Daily 12pm–1:30am</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">Since 2009</span>
           <span class="highlight-chip">Music Venue</span>
@@ -702,6 +912,10 @@
         <h3>Georgies Bar</h3>
         <div class="address">📍 812 5th Avenue, Asbury Park, NJ 07712</div>
         <div class="desc">Named one of the best bars in the country by USA Today (2025). Still-functioning cigarette machine. Beer-and-shot counter with a conscience. Drag shows against an American flag backdrop. Karaoke that lets it all out. An LGBTQ+ stronghold and Asbury icon.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Mon–Thu 3pm–2am · Fri–Sat 2pm–2am · Sun 1pm–2am</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">USA Today Best Bar</span>
           <span class="highlight-chip">Karaoke</span>
@@ -725,6 +939,10 @@
         <h3>Erratic Fermentations</h3>
         <div class="address">📍 714 Main St, Bradley Beach, NJ 07720</div>
         <div class="desc">The newest kid on the block. Opened April 2026 in the former Bradley Brew Project space. Good mid-ride craft beer break before the longer northern stretch. Fresh pours, new energy, and a taproom that's already earning its keep on the Shore.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Thu–Fri 4–10pm · Sat 12–10pm · Sun 12–6pm<br>Closed Mon–Wed</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">Brand New (2026)</span>
           <span class="highlight-chip">Craft Focus</span>
@@ -747,6 +965,10 @@
         <h3>The Ark Pub & Eatery</h3>
         <div class="address">📍 Main St area, Point Pleasant Beach, NJ</div>
         <div class="desc">Opened in the 1970s, this place feels like it was plucked from old County Cork. They'll cook any fish you catch. Burgers, steamers, chowder, mac & cheese. Singo nights. Long-time staff with down-to-earth charm you can only find in the best dives.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Daily 11:30am–2am</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">Est. 1970s</span>
           <span class="highlight-chip">Irish Pub Vibe</span>
@@ -770,6 +992,10 @@
         <h3>Donovan's Reef</h3>
         <div class="address">📍 Sea Bright, NJ (oceanfront)</div>
         <div class="desc">In summer it's busy. In the off-season, it becomes a chill, locals-only beachfront bar with dive energy and ocean views that never get old. The kind of place where the Atlantic is your backdrop and the beers taste better because of it.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Summer 9am–close · Off-season 10am–close<br>Happy Hour Mon–Fri 3–6pm</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">Oceanfront</span>
           <span class="highlight-chip">Locals Only Vibe</span>
@@ -792,6 +1018,10 @@
         <h3>Murphy's Tavern</h3>
         <div class="address">📍 17 Ward Lane, Rumson, NJ 07760</div>
         <div class="desc">A Prohibition-era basement bar near the Navesink River — "the shore's best kept secret." Once sheltered rum runners. Now it's a local favorite with old-world character. Open Mon–Sat, 4pm–2am. Skip if you're short on time; detour if you want the story.</div>
+        <div class="stop-hours">
+          <span class="hours-icon">🕐</span>
+          <div><strong>Hours:</strong> Mon–Sat 4pm–2am<br>Closed Sundays</div>
+        </div>
         <div class="stop-highlights">
           <span class="highlight-chip">Prohibition Era</span>
           <span class="highlight-chip">Basement Bar</span>
@@ -842,6 +1072,62 @@
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════ SIGN UP ═══════════════════ -->
+<div class="signup-section" id="signup">
+  <div class="signup-inner">
+    <div class="section-label fade-in">Join the Ride</div>
+    <div class="section-title fade-in">In? Let Us Know.</div>
+    <div class="signup-desc fade-in">Drop your info below. We'll hit you up when we lock in a date. No spam, no BS — just beers and bikes.</div>
+
+    <form class="signup-form fade-in" id="signupForm">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+      </div>
+      <div class="form-row">
+        <input type="tel" name="phone" placeholder="Phone (optional)">
+        <select name="group_size" required>
+          <option value="" disabled selected>How many in your crew?</option>
+          <option value="1">Just me</option>
+          <option value="2">2 people</option>
+          <option value="3-4">3–4 people</option>
+          <option value="5+">5+ people</option>
+        </select>
+      </div>
+      <select name="experience">
+        <option value="" disabled selected>Riding experience level?</option>
+        <option value="casual">Casual — I ride occasionally</option>
+        <option value="regular">Regular — I ride a few times a month</option>
+        <option value="serious">Serious — I ride weekly+</option>
+      </select>
+      <input type="text" name="neighborhood" placeholder="Your neighborhood / town (optional)">
+      <button type="submit" class="signup-btn">Count Me In</button>
+      <div class="signup-note">Your info stays with us. We'll only email about ride dates.</div>
+    </form>
+
+    <div class="signup-success" id="signupSuccess">
+      <span class="success-icon">🍻</span>
+      <h3>You're on the list</h3>
+      <p>We'll send you a date pick when we've got enough riders. Ride safe.</p>
+    </div>
+
+    <div class="counter-bar fade-in">
+      <div class="counter-item">
+        <div class="count" id="interestCount">0</div>
+        <div class="count-label">Interested</div>
+      </div>
+      <div class="counter-item">
+        <div class="count">8</div>
+        <div class="count-label">Stops</div>
+      </div>
+      <div class="counter-item">
+        <div class="count">33</div>
+        <div class="count-label">Miles</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
@@ -1003,6 +1289,40 @@ document.querySelectorAll('.stop-card').forEach(card => {
     }
   });
 });
+
+// ── SIGN UP FORM ──
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData);
+
+  // Store in localStorage for persistence
+  const existing = JSON.parse(localStorage.getItem('crawl_signups') || '[]');
+  existing.push({ ...data, timestamp: new Date().toISOString() });
+  localStorage.setItem('crawl_signups', JSON.stringify(existing));
+
+  // Update counter
+  document.getElementById('interestCount').textContent = existing.length;
+
+  // Show success, hide form
+  this.style.display = 'none';
+  document.getElementById('signupSuccess').style.display = 'block';
+
+  // Optional: send to Formspree (replace YOUR_FORM_ID with actual ID)
+  // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(data)
+  // });
+});
+
+// Load existing count on page load
+(function() {
+  const existing = JSON.parse(localStorage.getItem('crawl_signups') || '[]');
+  if (existing.length > 0) {
+    document.getElementById('interestCount').textContent = existing.length;
+  }
+})();
 </script>
 </body>
 </html>
