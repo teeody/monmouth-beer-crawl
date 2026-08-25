@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>End of Summer Beer Bike Crawl — Monmouth County, NJ</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -277,32 +276,44 @@
     border-top: 3px solid var(--coral);
     border-bottom: 3px solid var(--ocean);
     box-shadow: 0 -4px 20px rgba(255,107,107,0.15), 0 4px 20px rgba(0,119,182,0.15);
+    border-radius: 0;
+    overflow: hidden;
   }
 
-  #map { width: 100%; height: 550px; background: var(--sand-light); }
+  .illustrated-map {
+    width: 100%;
+    display: block;
+  }
+
+  .illustrated-map svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   .map-legend {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
+    z-index: 10;
+    background: rgba(2,48,71,0.85);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255,107,107,0.3);
     border-radius: 14px;
-    padding: 16px 20px;
-    font-size: 0.78rem;
+    padding: 14px 18px;
+    font-size: 0.75rem;
+    color: var(--sand);
   }
 
   .map-legend h4 {
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 3px;
     color: var(--coral-light);
-    margin-bottom: 10px;
-    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
   }
 
-  .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
   .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
   /* ── STOPS ── */
@@ -740,64 +751,6 @@
   footer .footer-emoji { font-size: 2rem; display: block; margin-bottom: 16px; }
 
   /* ── LEAFLET ── */
-  .leaflet-popup-content-wrapper {
-    background: var(--navy-card) !important;
-    color: var(--sand-light) !important;
-    border: 1px solid var(--coral) !important;
-    border-radius: 14px !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.6), var(--neon-coral) !important;
-  }
-
-  .leaflet-popup-tip {
-    background: var(--navy-card) !important;
-    border: 1px solid var(--coral) !important;
-    border-top: none !important;
-    border-left: none !important;
-  }
-
-  .leaflet-popup-content {
-    font-family: 'Inter', sans-serif !important;
-    margin: 14px 16px !important;
-    line-height: 1.5 !important;
-  }
-
-  .leaflet-popup-content .popup-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.05rem;
-    letter-spacing: 2px;
-    color: var(--coral-light);
-  }
-
-  .leaflet-popup-content .popup-type {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--sand);
-    margin-bottom: 4px;
-  }
-
-  .leaflet-popup-content .popup-desc { font-size: 0.8rem; color: var(--sand); }
-  .leaflet-popup-close-button { color: var(--sand) !important; font-size: 20px !important; }
-
-  .custom-marker {
-    display: flex; align-items: center; justify-content: center;
-    width: 36px; height: 36px;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    border: 2px solid #fff;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-  }
-
-  .custom-marker span {
-    transform: rotate(45deg);
-    font-weight: 700; font-size: 14px;
-    font-family: 'Bebas Neue', sans-serif;
-  }
-
-  .marker-dive { background: var(--coral); }
-  .marker-brewery { background: var(--ocean-dark); }
-  .marker-speakeasy { background: var(--ocean); }
-  .marker-start { background: var(--sunset); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -828,7 +781,6 @@
     .hero-stats { gap: 28px; }
     .hero-stat .num { font-size: 2.4rem; }
     .hero-stat .label { font-size: 0.7rem; }
-    #map { height: 450px; }
     .stop-card { padding: 22px; }
     .stop-content h3 { font-size: 1.3rem; }
     .tips-grid { grid-template-columns: 1fr 1fr; }
@@ -864,8 +816,6 @@
       text-align: center;
     }
 
-    #map { height: 350px; }
-    .map-legend { display: none; }
 
     .tips-grid { grid-template-columns: 1fr; gap: 12px; }
     .tip-card { padding: 20px; }
@@ -979,7 +929,179 @@
   <div class="section-label fade-in">Route Overview</div>
   <div class="section-title fade-in">Map Your Ride</div>
   <div class="map-wrap">
-    <div id="map"></div>
+    <div class="illustrated-map">
+      <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="mapClip"><rect width="800" height="600" rx="0"/></clipPath>
+          <linearGradient id="oceanGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#90E0EF"/>
+            <stop offset="100%" stop-color="#0077B6"/>
+          </linearGradient>
+          <linearGradient id="sandGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F5E6CA"/>
+            <stop offset="100%" stop-color="#E8D5B7"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#023047" flood-opacity="0.4"/>
+          </filter>
+          <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="0.8" fill="rgba(0,119,182,0.06)"/>
+          </pattern>
+        </defs>
+
+        <g clip-path="url(#mapClip)">
+          <!-- Background -->
+          <rect width="800" height="600" fill="url(#sandGrad)"/>
+          <rect width="800" height="600" fill="url(#dots)"/>
+
+          <!-- Ocean -->
+          <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340
+                   C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600 L800,600 L800,0 Z"
+                fill="url(#oceanGrad)" opacity="0.45"/>
+
+          <!-- Coastline -->
+          <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340
+                   C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600"
+                fill="none" stroke="#E8D5B7" stroke-width="5" opacity="0.9"/>
+          <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340
+                   C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600"
+                fill="none" stroke="#0077B6" stroke-width="1.5" opacity="0.5"
+                stroke-dasharray="8,6"/>
+
+          <!-- Ocean waves -->
+          <path d="M460,30 Q475,22 490,30 Q505,38 520,30" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.2"/>
+          <path d="M440,80 Q460,70 480,80 Q500,90 520,80" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.18"/>
+          <path d="M430,140 Q450,130 470,140 Q490,150 510,140" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.16"/>
+          <path d="M445,210 Q465,200 485,210 Q505,220 525,210" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.2"/>
+          <path d="M425,280 Q445,270 465,280 Q485,290 505,280" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.15"/>
+          <path d="M415,350 Q435,340 455,350 Q475,360 495,350" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.18"/>
+          <path d="M400,420 Q420,410 440,420 Q460,430 480,420" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.16"/>
+          <path d="M380,490 Q400,480 420,490 Q440,500 460,490" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.2"/>
+          <path d="M360,550 Q380,540 400,550 Q420,560 440,550" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.15"/>
+
+          <!-- Route line - dashed coral -->
+          <path d="M290,477 C310,455 335,430 348,405
+                   C358,385 340,370 322,355
+                   L318,361
+                   C310,375 295,390 280,399
+                   C268,415 240,350 220,280
+                   C205,225 195,165 202,100
+                   C210,135 235,170 260,200
+                   C285,230 290,310 290,400 L290,477"
+                fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="10,8"
+                stroke-linecap="round" opacity="0.7" filter="url(#glow)"/>
+
+          <!-- ── STOP MARKERS ── -->
+
+          <!-- 1: Birdsmouth Beer (Start/End) -->
+          <circle cx="290" cy="477" r="18" fill="#FFB347" stroke="#fff" stroke-width="2.5" filter="url(#shadow)"/>
+          <text x="290" y="483" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="17" font-weight="700">1</text>
+          <text x="290" y="504" text-anchor="middle" fill="#023047" font-family="'Inter',sans-serif" font-size="10" font-weight="600">BIRDSMOUTH</text>
+          <text x="290" y="514" text-anchor="middle" fill="#023047" font-family="'Inter',sans-serif" font-size="8" opacity="0.6">BEER</text>
+          <!-- Start flag -->
+          <rect x="308" y="459" width="22" height="14" rx="2" fill="#FFB347" opacity="0.9"/>
+          <text x="319" y="469" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="8" letter-spacing="1">START</text>
+
+          <!-- 2: Nip N Tuck -->
+          <circle cx="348" cy="405" r="15" fill="#FF6B6B" stroke="#fff" stroke-width="2.5" filter="url(#shadow)"/>
+          <text x="348" y="410" text-anchor="middle" fill="#fff" font-family="'Bebas Neue',sans-serif" font-size="15" font-weight="700">2</text>
+          <text x="370" y="400" fill="#023047" font-family="'Inter',sans-serif" font-size="9.5" font-weight="600">NIP N TUCK</text>
+
+          <!-- 3: Bond Street Bar -->
+          <circle cx="322" cy="355" r="15" fill="#FF6B6B" stroke="#fff" stroke-width="2.5" filter="url(#shadow)"/>
+          <text x="322" y="360" text-anchor="middle" fill="#fff" font-family="'Bebas Neue',sans-serif" font-size="15" font-weight="700">3</text>
+          <text x="344" y="350" fill="#023047" font-family="'Inter',sans-serif" font-size="9.5" font-weight="600">BOND ST</text>
+
+          <!-- 4: Georgies Bar -->
+          <circle cx="318" cy="361" r="12" fill="#FF6B6B" stroke="#fff" stroke-width="2" filter="url(#shadow)"/>
+          <text x="318" y="365" text-anchor="middle" fill="#fff" font-family="'Bebas Neue',sans-serif" font-size="12" font-weight="700">4</text>
+          <text x="296" y="343" text-anchor="end" fill="#023047" font-family="'Inter',sans-serif" font-size="9.5" font-weight="600">GEORGIES</text>
+
+          <!-- 5: Erratic Fermentations -->
+          <circle cx="280" cy="399" r="15" fill="#0077B6" stroke="#fff" stroke-width="2.5" filter="url(#shadow)"/>
+          <text x="280" y="404" text-anchor="middle" fill="#fff" font-family="'Bebas Neue',sans-serif" font-size="15" font-weight="700">5</text>
+          <text x="258" y="394" text-anchor="end" fill="#023047" font-family="'Inter',sans-serif" font-size="9" font-weight="600">ERRATIC</text>
+          <text x="258" y="404" text-anchor="end" fill="#023047" font-family="'Inter',sans-serif" font-size="9" font-weight="600">FERMENTATIONS</text>
+
+          <!-- 6: The Globe Hotel -->
+          <circle cx="202" cy="100" r="15" fill="#FF6B6B" stroke="#fff" stroke-width="2.5" filter="url(#shadow)"/>
+          <text x="202" y="105" text-anchor="middle" fill="#fff" font-family="'Bebas Neue',sans-serif" font-size="15" font-weight="700">6</text>
+          <text x="180" y="95" text-anchor="end" fill="#023047" font-family="'Inter',sans-serif" font-size="9.5" font-weight="600">THE GLOBE</text>
+          <text x="180" y="105" text-anchor="end" fill="#023047" font-family="'Inter',sans-serif" font-size="9.5" font-weight="600">HOTEL</text>
+
+          <!-- ── TOWN LABELS ── -->
+          <text x="290" y="548" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="13" letter-spacing="3" opacity="0.5">OCEANPORT</text>
+          <text x="368" y="432" text-anchor="start" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="13" letter-spacing="3" opacity="0.5">LONG BRANCH</text>
+          <text x="348" y="322" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="14" letter-spacing="3" opacity="0.5">ASBURY PARK</text>
+          <text x="278" y="426" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="12" letter-spacing="3" opacity="0.5">BRADLEY BEACH</text>
+          <text x="188" y="132" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="13" letter-spacing="3" opacity="0.5">RED BANK</text>
+
+          <!-- ── ROUTE LEG LABELS ── -->
+          <text x="335" y="443" text-anchor="middle" fill="#FF6B6B" font-family="'Inter',sans-serif" font-size="8" font-weight="600" opacity="0.8">4 mi</text>
+          <text x="340" y="380" text-anchor="middle" fill="#FF6B6B" font-family="'Inter',sans-serif" font-size="8" font-weight="600" opacity="0.8">5 mi</text>
+          <text x="315" y="383" text-anchor="middle" fill="#FF6B6B" font-family="'Inter',sans-serif" font-size="7" font-weight="600" opacity="0.6">walk</text>
+          <text x="290" y="420" text-anchor="middle" fill="#FF6B6B" font-family="'Inter',sans-serif" font-size="8" font-weight="600" opacity="0.8">2 mi</text>
+          <text x="235" y="260" text-anchor="middle" fill="#FF6B6B" font-family="'Inter',sans-serif" font-size="8" font-weight="600" opacity="0.8">10 mi</text>
+          <text x="265" y="300" text-anchor="middle" fill="#FF6B6B" font-family="'Inter',sans-serif" font-size="8" font-weight="600" opacity="0.8">7 mi</text>
+
+          <!-- ── ATLANTIC OCEAN LABEL ── -->
+          <text x="560" y="300" text-anchor="middle" fill="#0077B6" font-family="'Bebas Neue',sans-serif" font-size="22" letter-spacing="8" opacity="0.18" transform="rotate(-90 560 300)">ATLANTIC OCEAN</text>
+
+          <!-- ── COMPASS ROSE ── -->
+          <g transform="translate(690,80)" opacity="0.6">
+            <circle cx="0" cy="0" r="30" fill="rgba(2,48,71,0.1)" stroke="#023047" stroke-width="0.8"/>
+            <polygon points="0,-25 4,-5 -4,-5" fill="#FF6B6B"/>
+            <polygon points="0,25 4,5 -4,5" fill="#023047"/>
+            <polygon points="-25,0 -5,4 -5,-4" fill="#023047"/>
+            <polygon points="25,0 5,4 5,-4" fill="#023047"/>
+            <circle cx="0" cy="0" r="3" fill="#023047"/>
+            <text x="0" y="-34" text-anchor="middle" fill="#FF6B6B" font-family="'Bebas Neue',sans-serif" font-size="11" letter-spacing="1">N</text>
+            <text x="0" y="42" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="9" letter-spacing="1">S</text>
+            <text x="-36" y="4" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="9" letter-spacing="1">W</text>
+            <text x="36" y="4" text-anchor="middle" fill="#023047" font-family="'Bebas Neue',sans-serif" font-size="9" letter-spacing="1">E</text>
+          </g>
+
+          <!-- ── TITLE BADGE ── -->
+          <rect x="24" y="16" width="200" height="52" rx="10" fill="rgba(2,48,71,0.85)"/>
+          <text x="124" y="38" text-anchor="middle" fill="#FFB347" font-family="'Bebas Neue',sans-serif" font-size="15" letter-spacing="3">MONMOUTH COUNTY</text>
+          <text x="124" y="57" text-anchor="middle" fill="#fff" font-family="'Inter',sans-serif" font-size="10" font-weight="600">28-Mile Beer Bike Crawl · 6 Stops</text>
+
+          <!-- ── BIKE ICON ── -->
+          <g transform="translate(50,545)" opacity="0.25">
+            <circle cx="12" cy="14" r="9" fill="none" stroke="#023047" stroke-width="1.5"/>
+            <circle cx="36" cy="14" r="9" fill="none" stroke="#023047" stroke-width="1.5"/>
+            <path d="M12,14 L22,2 L30,14 L36,14" fill="none" stroke="#023047" stroke-width="1.5"/>
+            <line x1="22" y1="2" x2="32" y2="2" stroke="#023047" stroke-width="1.5"/>
+            <circle cx="22" cy="2" r="2" fill="#023047"/>
+          </g>
+
+          <!-- ── BEACH DECORATIONS ── -->
+          <!-- Palm tree -->
+          <g transform="translate(455,480)" opacity="0.2">
+            <line x1="0" y1="0" x2="0" y2="-30" stroke="#023047" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M0,-30 Q-15,-45 -20,-35" fill="none" stroke="#023047" stroke-width="2"/>
+            <path d="M0,-30 Q15,-45 20,-35" fill="none" stroke="#023047" stroke-width="2"/>
+            <path d="M0,-30 Q-8,-50 -18,-42" fill="none" stroke="#023047" stroke-width="1.5"/>
+            <path d="M0,-30 Q8,-50 18,-42" fill="none" stroke="#023047" stroke-width="1.5"/>
+          </g>
+
+          <!-- Sun -->
+          <circle cx="680" cy="510" r="22" fill="#FFB347" opacity="0.15"/>
+          <circle cx="680" cy="510" r="16" fill="#FFB347" opacity="0.1"/>
+
+          <!-- Sand dots texture -->
+          <circle cx="100" cy="200" r="1" fill="#023047" opacity="0.05"/>
+          <circle cx="150" cy="350" r="1.2" fill="#023047" opacity="0.04"/>
+          <circle cx="80" cy="450" r="0.8" fill="#023047" opacity="0.06"/>
+          <circle cx="180" cy="500" r="1" fill="#023047" opacity="0.04"/>
+          <circle cx="120" cy="150" r="1.1" fill="#023047" opacity="0.05"/>
+        </g>
+      </svg>
+    </div>
     <div class="map-legend">
       <h4>Legend</h4>
       <div class="legend-item">
@@ -993,10 +1115,6 @@
       <div class="legend-item">
         <div class="legend-dot" style="background: var(--ocean);"></div>
         <span>Brewery</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background: #9c27b0;"></div>
-        <span>Speakeasy</span>
       </div>
       <div class="legend-item">
         <div class="legend-dot" style="background: transparent; border: 2px dashed var(--coral); width: 8px; height: 8px;"></div>
@@ -1344,83 +1462,13 @@
 </footer>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-// ── MAP SETUP ──
-const map = L.map('map', {
-  center: [40.15, -74.00],
-  zoom: 11,
-  zoomControl: false,
-  attributionControl: false
-});
-
-L.control.zoom({ position: 'topright' }).addTo(map);
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  maxZoom: 19,
-  attribution: '&copy; OpenStreetMap &copy; CARTO'
-}).addTo(map);
-
-// ── STOPS DATA ──
-const stops = [
-  { id: 1, name: "Birdsmouth Beer", type: "start", lat: 40.1620, lng: -74.0175, desc: "Start here. Craft brewery taproom." },
-  { id: 2, name: "Nip N Tuck Bar & Grill", type: "dive", lat: 40.1990, lng: -73.9900, desc: "50+ year dive. Grilled Cheese of the Week." },
-  { id: 3, name: "Bond Street Bar", type: "dive", lat: 40.2235, lng: -74.0035, desc: "Asbury's living room since 2009." },
-  { id: 4, name: "Georgies Bar", type: "dive", lat: 40.2210, lng: -74.0050, desc: "USA Today Best Bar 2025." },
-  { id: 5, name: "Erratic Fermentations", type: "brewery", lat: 40.2020, lng: -74.0260, desc: "Brand new craft brewery (2026)." },
-  { id: 6, name: "The Globe Hotel", type: "dive", lat: 40.3523, lng: -74.0646, desc: "Red Bank staple since 1840." }
-];
-
-// ── ROUTE ──
-const routeCoords = [
-  // Oceanport → Long Branch (south along coast)
-  [40.1620, -74.0175],[40.1700, -74.0100],[40.1800, -73.9980],
-  [40.1990, -73.9900],
-  // Long Branch → Asbury Park (south via Route 71)
-  [40.2050, -73.9930],[40.2120, -73.9980],
-  [40.2200, -74.0010],[40.2235, -74.0035],
-  // Bond St → Georgies (1 block)
-  [40.2210, -74.0050],
-  // Asbury → Bradley Beach (south via local streets)
-  [40.2150, -74.0100],[40.2080, -74.0180],[40.2020, -74.0260],
-  // Bradley Beach → Red Bank (north via Branch Ave → Route 35 → Navesink River Rd)
-  [40.2100, -74.0300],[40.2200, -74.0350],[40.2400, -74.0400],
-  [40.2600, -74.0450],[40.2800, -74.0500],[40.3000, -74.0550],
-  [40.3200, -74.0600],[40.3400, -74.0630],[40.3523, -74.0646],
-  // Red Bank → Oceanport (west via Route 520)
-  [40.3450, -74.0550],[40.3300, -74.0450],
-  [40.3100, -74.0350],[40.2900, -74.0250],[40.2700, -74.0200],
-  [40.2500, -74.0180],[40.2200, -74.0175],[40.1900, -74.0175],
-  [40.1620, -74.0175]
-];
-
-L.polyline(routeCoords, {
-  color: '#FF6B6B', weight: 3, opacity: 0.5, dashArray: '8, 12', lineCap: 'round'
-}).addTo(map);
-
-// ── MARKERS ──
-stops.forEach(stop => {
-  const markerHtml = `<div class="custom-marker marker-${stop.type}"><span>${stop.id}</span></div>`;
-  const icon = L.divIcon({ html: markerHtml, className: '', iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -36] });
-  const popupContent = `<div class="popup-type">${stop.type}</div><div class="popup-name">${stop.name}</div><div class="popup-desc">${stop.desc}</div>`;
-  L.marker([stop.lat, stop.lng], { icon }).addTo(map).bindPopup(popupContent, { maxWidth: 240 });
-});
-
 // ── SCROLL ANIMATIONS ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// ── CARD HOVER → MAP FLY ──
-document.querySelectorAll('.stop-card').forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    const id = parseInt(card.id.split('-')[1]);
-    const stop = stops.find(s => s.id === id);
-    if (stop) map.flyTo([stop.lat, stop.lng], 14, { duration: 1.2 });
-  });
-});
 
 // ── SIGN UP FORM ──
 document.getElementById('signupForm').addEventListener('submit', function(e) {
