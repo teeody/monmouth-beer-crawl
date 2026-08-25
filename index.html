@@ -1112,7 +1112,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 5 mi west via Highlands Bridge → Henry Hudson Trail → Oceanport</span>
+      <span class="dist">↓ 12 mi north via Route 35 → Ocean Ave → Red Bank</span>
       <div class="line"></div>
     </div>
 
@@ -1135,6 +1135,12 @@
           <span class="highlight-chip">The Globe Burger</span>
         </div>
       </div>
+    </div>
+
+    <div class="route-connector">
+      <div class="line"></div>
+      <span class="dist">↓ 7 mi west via Route 520 → Oceanport (back to start)</span>
+      <div class="line"></div>
     </div>
 
   </div>
@@ -1320,7 +1326,7 @@ const stops = [
   { id: 5, name: "Erratic Fermentations", type: "brewery", lat: 40.2020, lng: -74.0260, desc: "Brand new craft brewery (2026)." },
   { id: 6, name: "The Ark Pub & Eatery", type: "dive", lat: 40.0860, lng: -74.0650, desc: "Irish pub vibe since the 1970s." },
   { id: 7, name: "Donovan's Reef", type: "dive", lat: 40.1410, lng: -73.9830, desc: "Oceanfront dive. Locals only." },
-  { id: 8, name: "The Globe Hotel (Bonus)", type: "speakeasy", lat: 40.3467, lng: -74.0659, desc: "Red Bank staple since 1840." }
+  { id: 8, name: "The Globe Hotel (Bonus)", type: "speakeasy", lat: 40.3523, lng: -74.0646, desc: "Red Bank staple since 1840." }
 ];
 
 // ── ROUTE ──
@@ -1333,8 +1339,13 @@ const routeCoords = [
   [40.1300, -74.0600],[40.1100, -74.0630],[40.0950, -74.0650],
   [40.0860, -74.0650],[40.0950, -74.0550],[40.1050, -74.0400],
   [40.1150, -74.0250],[40.1250, -74.0100],[40.1350, -73.9950],
-  [40.1410, -73.9830],[40.1480, -73.9900],[40.1550, -74.0000],
-  [40.1600, -74.0100],[40.1620, -74.0175]
+  [40.1410, -73.9830],[40.1500, -73.9850],[40.1700, -73.9900],
+  [40.2000, -73.9950],[40.2300, -74.0050],[40.2600, -74.0150],
+  [40.2900, -74.0250],[40.3200, -74.0400],[40.3400, -74.0550],
+  [40.3523, -74.0646],[40.3450, -74.0550],[40.3300, -74.0450],
+  [40.3100, -74.0350],[40.2900, -74.0250],[40.2700, -74.0200],
+  [40.2500, -74.0180],[40.2200, -74.0175],[40.1900, -74.0175],
+  [40.1620, -74.0175]
 ];
 
 L.polyline(routeCoords, {
