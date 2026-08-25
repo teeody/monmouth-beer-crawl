@@ -160,6 +160,81 @@
     animation: bounce 2s infinite;
   }
 
+  .todd-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.18em;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--yellow);
+    padding: 6px 20px;
+    border-radius: 6px;
+    margin-top: 16px;
+    box-shadow: 0 0 20px rgba(255,225,53,0.35), 0 0 40px rgba(255,225,53,0.15);
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  /* ── PHOTO GALLERY ── */
+  .gallery-section {
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 3px solid var(--pink);
+    box-shadow: 0 4px 30px rgba(233,30,140,0.15);
+  }
+
+  .gallery-track {
+    display: flex;
+    gap: 6px;
+    animation: scroll-gallery 30s linear infinite;
+    width: max-content;
+  }
+
+  .gallery-track:hover {
+    animation-play-state: paused;
+  }
+
+  .gallery-item {
+    flex-shrink: 0;
+    width: 280px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 0;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.85) contrast(1.05);
+    transition: filter 0.4s, transform 0.4s;
+  }
+
+  .gallery-item:hover img {
+    filter: saturate(1.1) contrast(1.1);
+    transform: scale(1.05);
+  }
+
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(26,16,38,0.4) 100%);
+    pointer-events: none;
+  }
+
+  @keyframes scroll-gallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 640px) {
+    .gallery-item { width: 200px; height: 140px; }
+    .todd-tag { font-size: 0.15em; letter-spacing: 4px; padding: 5px 14px; }
+  }
+
   /* ── SECTION LAYOUT ── */
   section { padding: 100px 24px; max-width: 1200px; margin: 0 auto; }
 
@@ -764,7 +839,7 @@
   <div class="hero-badge">Monmouth County, NJ — End of Summer 2026</div>
   <h1>
     <span class="accent">End of Summer</span><br>Beer Bike Crawl
-    <span>brought to you by todd</span>
+    <span class="todd-tag">brought to you by todd</span>
     <span>8 Stops · 33 Miles · 0 Regrets</span>
   </h1>
   <div class="hero-stats">
@@ -788,6 +863,29 @@
   <div class="hero-scroll">
     <span>Scroll to explore</span>
     <div class="arrow"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PHOTO GALLERY ═══════════════════ -->
+<div class="gallery-section">
+  <div class="gallery-track">
+    <div class="gallery-item"><img src="photos/PXL_20260607_185005089.MP.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_0003.JPG" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/0624180731a-COLLAGE.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/CameraZOOM-20150503132031856.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_20130505_145422_019.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/FB_IMG_1430687285153.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_20220501_183541_500.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_4175.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <!-- duplicate set for seamless loop -->
+    <div class="gallery-item"><img src="photos/PXL_20260607_185005089.MP.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_0003.JPG" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/0624180731a-COLLAGE.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/CameraZOOM-20150503132031856.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_20130505_145422_019.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/FB_IMG_1430687285153.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_20220501_183541_500.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
+    <div class="gallery-item"><img src="photos/IMG_4175.jpg" alt="Beer bike crawl photo" loading="lazy"></div>
   </div>
 </div>
 
