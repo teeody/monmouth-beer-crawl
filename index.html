@@ -913,7 +913,7 @@
 </head>
 <body>
 
-<button class="share-btn" onclick="shareSite()" aria-label="Share this site">share with anyone that's cool but won't ask me any questions</button>
+<button class="share-btn" onclick="shareSite()" aria-label="Share this site">share with anyone that's cool</button>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
@@ -1550,7 +1550,7 @@ function shareSite() {
       btn.textContent = 'link copied — now send it';
       setTimeout(() => {
         btn.classList.remove('copied');
-        btn.textContent = "share with anyone that's cool but won't ask me any questions";
+        btn.textContent = "share with anyone that's cool";
       }, 2500);
     }).catch(() => {
       prompt('Copy this link:', url);
