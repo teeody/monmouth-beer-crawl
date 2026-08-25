@@ -1080,7 +1080,7 @@
     <div class="section-title fade-in">In? Let Us Know.</div>
     <div class="signup-desc fade-in">Drop your info below. We'll hit you up when we lock in a date. No spam, no BS — just beers and bikes.</div>
 
-    <form class="signup-form fade-in" id="signupForm">
+    <form class="signup-form fade-in" id="signupForm" action="https://formsubmit.co/teeody+github@proton.me" method="POST">
       <div class="form-row">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Email address" required>
@@ -1102,6 +1102,8 @@
         <option value="serious">Serious — I ride weekly+</option>
       </select>
       <input type="text" name="neighborhood" placeholder="Your neighborhood / town (optional)">
+      <input type="hidden" name="_subject" value="New Beer Bike Crawl Sign-Up">
+      <input type="hidden" name="_captcha" value="false">
       <button type="submit" class="signup-btn">Count Me In</button>
       <div class="signup-note">Your info stays with us. We'll only email about ride dates.</div>
     </form>
@@ -1293,27 +1295,29 @@ document.querySelectorAll('.stop-card').forEach(card => {
 // ── SIGN UP FORM ──
 document.getElementById('signupForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const formData = new FormData(this);
+  const form = this;
+  const formData = new FormData(form);
   const data = Object.fromEntries(formData);
 
-  // Store in localStorage for persistence
+  // Store in localStorage for the counter
   const existing = JSON.parse(localStorage.getItem('crawl_signups') || '[]');
   existing.push({ ...data, timestamp: new Date().toISOString() });
   localStorage.setItem('crawl_signups', JSON.stringify(existing));
-
-  // Update counter
   document.getElementById('interestCount').textContent = existing.length;
 
-  // Show success, hide form
-  this.style.display = 'none';
-  document.getElementById('signupSuccess').style.display = 'block';
-
-  // Optional: send to Formspree (replace YOUR_FORM_ID with actual ID)
-  // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(data)
-  // });
+  // Send to Formsubmit via fetch
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(() => {
+    form.style.display = 'none';
+    document.getElementById('signupSuccess').style.display = 'block';
+  }).catch(() => {
+    // Still show success if offline — data is in localStorage
+    form.style.display = 'none';
+    document.getElementById('signupSuccess').style.display = 'block';
+  });
 });
 
 // Load existing count on page load
