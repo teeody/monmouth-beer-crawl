@@ -176,6 +176,60 @@
     animation: fadeUp 1s ease 0.4s both;
   }
 
+  /* ── SHARE BUTTON ── */
+  .share-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(2,48,71,0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,107,107,0.3);
+    border-radius: 999px;
+    padding: 10px 18px;
+    color: var(--sand);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    white-space: nowrap;
+  }
+
+  .share-btn:hover {
+    background: rgba(255,107,107,0.2);
+    border-color: var(--coral);
+    box-shadow: 0 4px 20px rgba(255,107,107,0.2);
+  }
+
+  .share-btn:active {
+    transform: scale(0.97);
+  }
+
+  .share-icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .share-btn.copied {
+    background: rgba(255,179,71,0.25);
+    border-color: var(--sunset);
+  }
+
+  @media (max-width: 600px) {
+    .share-btn {
+      top: 12px;
+      left: 12px;
+      padding: 8px 14px;
+      font-size: 0.65rem;
+    }
+  }
+
   /* ── PHOTO GALLERY ── */
   .gallery-section {
     padding: 0;
@@ -843,6 +897,11 @@
 </head>
 <body>
 
+<button class="share-btn" onclick="shareSite()" aria-label="Share this site">
+  <span class="share-icon">↗</span>
+  <span class="share-text">share with anyone that's cool but won't ask me any questions</span>
+</button>
+
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
   <div class="hero-badge">Monmouth County, NJ — End of Summer 2026</div>
@@ -1463,6 +1522,29 @@
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
 <script>
+// ── SHARE ──
+function shareSite() {
+  const url = window.location.href;
+  const title = 'End of Summer Beer Bike Crawl — Monmouth County, NJ';
+  const text = '6 stops, 28 miles, 0 regrets. Monmouth County beer bike crawl.';
+
+  if (navigator.share) {
+    navigator.share({ title, text, url }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.share-btn');
+      btn.classList.add('copied');
+      btn.querySelector('.share-text').textContent = 'link copied — now send it';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.querySelector('.share-text').textContent = "share with anyone that's cool but won't ask me any questions";
+      }, 2500);
+    }).catch(() => {
+      prompt('Copy this link:', url);
+    });
+  }
+}
+
 // ── SCROLL ANIMATIONS ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
