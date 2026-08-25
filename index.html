@@ -449,6 +449,24 @@
     white-space: nowrap;
   }
 
+  .route-link {
+    color: var(--coral-light);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255,107,107,0.3);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .route-link:hover {
+    color: var(--sunset);
+    border-color: var(--sunset);
+  }
+
+  .route-link .route-time {
+    color: var(--sand);
+    font-size: 0.82em;
+    opacity: 0.7;
+  }
+
   /* ── TIPS ── */
   .tips-grid {
     display: grid;
@@ -841,11 +859,11 @@
   <h1>
     <span class="accent">End of Summer</span><br>Beer Bike Crawl
     <span class="todd-tag">brought to you by todd</span>
-    <span>8 Stops · 33 Miles · 0 Regrets</span>
+    <span>8 Stops · 41 Miles · 0 Regrets</span>
   </h1>
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="num">33</div>
+      <div class="num">41</div>
       <div class="label">Miles</div>
     </div>
     <div class="hero-stat">
@@ -937,7 +955,7 @@
         <div class="stop-tag tag-brewery">Brewery</div>
         <h3>Birdsmouth Beer</h3>
         <div class="address">📍 675 Oceanport Way, Oceanport, NJ 07757</div>
-        <div class="desc">Home base. This Oceanport brewery is the launchpad for the annual Bikes & Beers Monmouth event. Open-air taproom, killer craft lineup, and the perfect place to lock your bike for the return trip. Fuel up here — you've got 33 miles ahead.</div>
+        <div class="desc">Home base. This Oceanport brewery is the launchpad for the annual Bikes & Beers Monmouth event. Open-air taproom, killer craft lineup, and the perfect place to lock your bike for the return trip. Fuel up here — you've got 41 miles ahead.</div>
         <div class="stop-hours">
           <span class="hours-icon">🕐</span>
           <div><strong>Hours:</strong> Thu 4–8pm · Fri 4–9pm · Sat 12–9pm · Sun 12–7pm<br>Closed Mon–Wed</div>
@@ -952,7 +970,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 4 mi south via Ocean Ave</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/675+Oceanport+Way,+Oceanport,NJ/23+Norwood+Ave,+Long+Branch,NJ/@40.18,-74.00,13z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↓ 4 mi south via Ocean Ave <span class="route-time">~20 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -979,7 +997,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 5 mi south via Deal Rd → Allenhurst</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/23+Norwood+Ave,+Long+Branch,NJ/208+Bond+St,+Asbury+Park,NJ/@40.21,-74.00,13z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↓ 5 mi south via Route 71 <span class="route-time">~25 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -1006,7 +1024,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↔ Walk 1 block to 5th Ave</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/208+Bond+St,+Asbury+Park,NJ/812+5th+Ave,+Asbury+Park,NJ/@40.22,-74.00,16z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↔ Walk 1 block to 5th Ave <span class="route-time">~2 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -1033,7 +1051,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 2 mi south via Route 35 / local streets</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/812+5th+Ave,+Asbury+Park,NJ/714+Main+St,+Bradley+Beach,NJ/@40.21,-74.02,14z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↓ 2 mi south via local streets <span class="route-time">~10 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -1059,7 +1077,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 7 mi north via Branch Ave → Route 71 → Point Pleasant</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/714+Main+St,+Bradley+Beach,NJ/401+Route+35+N,+Point+Pleasant+Beach,NJ/@40.14,-74.04,13z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↓ 7 mi north via Branch Ave → Route 71 <span class="route-time">~35 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -1086,7 +1104,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 10 mi north via Route 35 → Sea Bright</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/401+Route+35+N,+Point+Pleasant+Beach,NJ/1117+Ocean+Ave,+Sea+Bright,NJ/@40.11,-74.01,13z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↓ 10 mi north via Route 35 <span class="route-time">~50 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -1112,7 +1130,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 12 mi north via Route 35 → Ocean Ave → Red Bank</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/1117+Ocean+Ave,+Sea+Bright,NJ/20+E+Front+St,+Red+Bank,NJ/@40.25,-74.02,13z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↓ 6 mi north via Henry Hudson Trail <span class="route-time">~30 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -1139,7 +1157,7 @@
 
     <div class="route-connector">
       <div class="line"></div>
-      <span class="dist">↓ 7 mi west via Route 520 → Oceanport (back to start)</span>
+      <span class="dist"><a href="https://www.google.com/maps/dir/20+E+Front+St,+Red+Bank,NJ/675+Oceanport+Way,+Oceanport,NJ/@40.25,-74.04,13z/data=!3m1!4b1!4m2!4m1!3e1" target="_blank" rel="noopener" class="route-link">↓ 7 mi west via Route 520 <span class="route-time">~35 min</span></a></span>
       <div class="line"></div>
     </div>
 
@@ -1160,7 +1178,7 @@
     <div class="tip-card fade-in">
       <div class="tip-icon">🚲</div>
       <h4>Trail Info</h4>
-      <p>The Henry Hudson Trail is 24 miles, paved, flat, and part of the National Rails-to-Trails Network. Use it for the return leg from Sea Bright through Atlantic Highlands back to Oceanport.</p>
+      <p>Every leg has a bike-safe route — Ocean Ave has protected lanes in Long Branch, Route 71 has wide shoulders through Deal, and the Henry Hudson Trail is a paved car-free path for the Sea Bright to Red Bank stretch. Click any route link for turn-by-turn directions.</p>
     </div>
     <div class="tip-card fade-in">
       <div class="tip-icon">🔒</div>
@@ -1170,7 +1188,7 @@
     <div class="tip-card fade-in">
       <div class="tip-icon">🍺</div>
       <h4>Pace Yourself</h4>
-      <p>33 miles is a real ride. Alternate water with beer. Eat at every stop — the food at these places is part of the experience. Nip N Tuck's grilled cheeses and The Ark's steamers are non-negotiable.</p>
+      <p>41 miles is a real ride. Alternate water with beer. Eat at every stop — the food at these places is part of the experience. Nip N Tuck's grilled cheeses and The Ark's steamers are non-negotiable.</p>
     </div>
     <div class="tip-card fade-in">
       <div class="tip-icon">🗺️</div>
@@ -1248,7 +1266,7 @@
         <div class="count-label">Stops</div>
       </div>
       <div class="counter-item">
-        <div class="count">33</div>
+        <div class="count">41</div>
         <div class="count-label">Miles</div>
       </div>
     </div>
