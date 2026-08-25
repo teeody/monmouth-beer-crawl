@@ -176,57 +176,73 @@
     animation: fadeUp 1s ease 0.4s both;
   }
 
-  /* ── SHARE BUTTON ── */
+  /* ── SHARE BUTTON (STAR STICKER) ── */
   .share-btn {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 16px;
+    left: 16px;
     z-index: 100;
+    width: 140px;
+    height: 140px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(2,48,71,0.85);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,107,107,0.3);
-    border-radius: 999px;
-    padding: 10px 18px;
-    color: var(--sand);
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+    background: var(--coral);
+    color: #fff;
     font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.3px;
     cursor: pointer;
+    border: none;
+    transform: rotate(-12deg);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    white-space: nowrap;
+    box-shadow: 0 4px 24px rgba(255,107,107,0.45), 0 0 0 3px rgba(255,255,255,0.15);
+    clip-path: polygon(
+      50% 0%, 61% 8%, 72% 0%, 78% 14%, 90% 6%, 87% 22%,
+      100% 24%, 91% 38%, 100% 48%, 90% 56%, 98% 70%, 85% 72%,
+      88% 88%, 74% 82%, 68% 98%, 58% 86%, 50% 100%, 42% 86%,
+      32% 98%, 26% 82%, 12% 88%, 15% 72%, 2% 70%, 10% 56%,
+      0% 48%, 9% 38%, 0% 24%, 13% 22%, 10% 6%, 22% 14%,
+      28% 0%, 39% 8%
+    );
   }
 
   .share-btn:hover {
-    background: rgba(255,107,107,0.2);
-    border-color: var(--coral);
-    box-shadow: 0 4px 20px rgba(255,107,107,0.2);
+    background: #e85555;
+    transform: rotate(-12deg) scale(1.08);
+    box-shadow: 0 6px 30px rgba(255,107,107,0.55), 0 0 0 3px rgba(255,255,255,0.25);
   }
 
   .share-btn:active {
-    transform: scale(0.97);
-  }
-
-  .share-icon {
-    font-size: 1rem;
-    line-height: 1;
+    transform: rotate(-12deg) scale(0.95);
   }
 
   .share-btn.copied {
-    background: rgba(255,179,71,0.25);
-    border-color: var(--sunset);
+    background: var(--sunset);
+  }
+
+  @keyframes wobble {
+    0%, 100% { transform: rotate(-12deg); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(-16deg); }
+  }
+
+  .share-btn:hover {
+    animation: wobble 0.4s ease-in-out;
   }
 
   @media (max-width: 600px) {
     .share-btn {
-      top: 12px;
-      left: 12px;
-      padding: 8px 14px;
-      font-size: 0.65rem;
+      width: 110px;
+      height: 110px;
+      top: 10px;
+      left: 10px;
+      font-size: 0.55rem;
+      line-height: 1.3;
     }
   }
 
@@ -897,10 +913,7 @@
 </head>
 <body>
 
-<button class="share-btn" onclick="shareSite()" aria-label="Share this site">
-  <span class="share-icon">↗</span>
-  <span class="share-text">share with anyone that's cool but won't ask me any questions</span>
-</button>
+<button class="share-btn" onclick="shareSite()" aria-label="Share this site">share with anyone that's cool but won't ask me any questions</button>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
@@ -1534,10 +1547,10 @@ function shareSite() {
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.querySelector('.share-btn');
       btn.classList.add('copied');
-      btn.querySelector('.share-text').textContent = 'link copied — now send it';
+      btn.textContent = 'link copied — now send it';
       setTimeout(() => {
         btn.classList.remove('copied');
-        btn.querySelector('.share-text').textContent = "share with anyone that's cool but won't ask me any questions";
+        btn.textContent = "share with anyone that's cool but won't ask me any questions";
       }, 2500);
     }).catch(() => {
       prompt('Copy this link:', url);
