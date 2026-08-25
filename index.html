@@ -246,6 +246,44 @@
     }
   }
 
+  /* ── MUSIC BUTTON ── */
+  .music-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(2,48,71,0.8);
+    backdrop-filter: blur(8px);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .music-btn:hover {
+    background: rgba(255,107,107,0.3);
+    border-color: var(--coral);
+    transform: scale(1.1);
+  }
+
+  .music-btn.playing {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    50% { box-shadow: 0 2px 20px rgba(255,107,107,0.4), 0 0 30px rgba(255,107,107,0.15); }
+  }
+
   /* ── PHOTO GALLERY ── */
   .gallery-section {
     padding: 0;
@@ -915,6 +953,11 @@
 
 <button class="share-btn" onclick="shareSite()" aria-label="Share this site">share with anyone that's cool</button>
 
+<audio id="polka" loop preload="auto">
+  <source src="polka.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="toggleMusic()" aria-label="Toggle music" title="Toggle polka music">🎵</button>
+
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
   <div class="hero-badge">Monmouth County, NJ — End of Summer 2026</div>
@@ -1531,6 +1574,7 @@
 <footer>
   <span class="footer-emoji">🍺</span>
   <p>End of Summer Beer Bike Crawl — Monmouth County, NJ — 2026</p>
+  <p style="font-size: 0.6rem; opacity: 0.4; margin-top: 8px;">Music: "Four Beers' Polka" by Kevin MacLeod (incompetech.com) — CC BY 3.0</p>
 </footer>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
@@ -1555,6 +1599,23 @@ function shareSite() {
     }).catch(() => {
       prompt('Copy this link:', url);
     });
+  }
+}
+
+// ── MUSIC ──
+const polka = document.getElementById('polka');
+polka.volume = 0.15;
+
+function toggleMusic() {
+  const btn = document.querySelector('.music-btn');
+  if (polka.paused) {
+    polka.play();
+    btn.classList.add('playing');
+    btn.textContent = '⏸';
+  } else {
+    polka.pause();
+    btn.classList.remove('playing');
+    btn.textContent = '🎵';
   }
 }
 
