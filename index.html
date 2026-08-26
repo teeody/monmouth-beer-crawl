@@ -386,6 +386,44 @@ a.chip-link:hover{background:var(--gold);color:var(--brown);border-color:var(--g
   .tip-card{padding:18px;border-radius:16px;box-shadow:var(--shadow)}
 }
 
+/* ════════════ FAQ ════════════ */
+.faq-list{margin-top:36px;max-width:720px}
+.faq-item{
+  border:4px solid var(--brown-mid);border-radius:16px;
+  background:var(--white);box-shadow:var(--shadow);
+  margin-bottom:12px;overflow:hidden;transition:all .3s;
+}
+.faq-item:hover{border-color:var(--gold)}
+.faq-question{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:18px 22px;cursor:pointer;
+  font-family:'Righteous',cursive;font-size:1rem;
+  letter-spacing:1px;color:var(--brown);
+  background:var(--cream);border:none;width:100%;text-align:left;
+  transition:background .2s;
+}
+.faq-question:hover{background:var(--cream-dark)}
+.faq-chevron{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  background:var(--orange);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;font-weight:700;
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
+}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-answer{
+  max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,1,.36,1);
+}
+.faq-answer-inner{
+  padding:0 22px 18px;font-size:.84rem;
+  color:var(--brown-light);line-height:1.7;font-weight:500;
+}
+
+@media(max-width:640px){
+  .faq-question{font-size:.9rem;padding:14px 16px}
+  .faq-answer-inner{padding:0 16px 14px}
+}
+
 /* ════════════ SIGN UP ════════════ */
 .signup-section{
   background:
@@ -899,6 +937,35 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 
 <!-- wave: cream-mid → cream -->
 <div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C360,60 720,0 1080,40 C1260,50 1380,30 1440,35 L1440,60 L0,60Z" fill="#FFF8EE"/></svg></div>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="section" id="faq" style="background:var(--cream);max-width:100%;padding-left:0;padding-right:0">
+  <div style="max-width:1100px;margin:0 auto;padding:0 16px">
+    <div class="section-eyebrow fade-in">Got Questions?</div>
+    <div class="section-heading fade-in">Frequently Asked</div>
+    <div class="faq-list">
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">What do I need to bring for the ride?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Everything. I provide nothing.</div></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">Is this really real?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Probably. If enough, but not too many people, sign up for one of the Sundays listed and the weather is good, we will most likely ride.</div></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">How will I know if there is a scheduled ride for the Sunday I picked?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">I'll send an email to confirm availability when it's looking like a ride is likely and we'll move from there.</div></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">Why are you so awesome?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">This is not true. This is a lie perpetuated by the cardboard industry.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave: cream → cream-mid -->
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C480,0 960,60 1440,25 L1440,60 L0,60Z" fill="#F5E6CC"/></svg></div>
 
 <!-- ═══════════════════ SIGN UP ═══════════════════ -->
 <div class="signup-section" id="signup">
