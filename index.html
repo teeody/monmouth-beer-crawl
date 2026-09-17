@@ -167,8 +167,7 @@ body{
 .ico-copy{background:var(--orange)}
 .ico-email{background:#E2A33C}
 .ico-sms{background:var(--gold)}
-.ico-wa{background:#25D366}
-.ico-tg{background:#229ED9}
+.ico-instagram{background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)}
 .ico-fb{background:#1877F2}
 .ico-x{background:#111}
 .share-close{position:absolute;top:8px;right:8px;width:26px;height:26px;border:none;border-radius:50%;background:var(--cream-mid);color:var(--brown);font-size:.8rem;cursor:pointer;line-height:1}
@@ -587,8 +586,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
     <button class="share-opt" onclick="shareVia('copy')"><span class="ico ico-copy">📋</span>copy link</button>
     <button class="share-opt" onclick="shareVia('email')"><span class="ico ico-email">✉️</span>email</button>
     <button class="share-opt" onclick="shareVia('sms')"><span class="ico ico-sms">💬</span>text</button>
-    <button class="share-opt" onclick="shareVia('whatsapp')"><span class="ico ico-wa"><i>WA</i></span>whatsapp</button>
-    <button class="share-opt" onclick="shareVia('telegram')"><span class="ico ico-tg">✈️</span>telegram</button>
+    <button class="share-opt" onclick="shareVia('instagram')"><span class="ico ico-instagram">📷</span>instagram</button>
     <button class="share-opt" onclick="shareVia('facebook')"><span class="ico ico-fb"><i>f</i></span>facebook</button>
     <button class="share-opt" onclick="shareVia('x')"><span class="ico ico-x"><i>X</i></span>X</button>
   </div>
@@ -1192,12 +1190,11 @@ function shareVia(kind) {
   const targets = {
     facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url),
     x: 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url),
-    telegram: 'https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text),
-    whatsapp: 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + url),
     email: 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(text + ' ' + url),
     sms: 'sms:?&body=' + encodeURIComponent(text + ' ' + url)
   };
   if (kind === 'native') { closeShare(); navigator.share({ title, text, url }).catch(() => {}); return; }
+  if (kind === 'instagram') { copyShareLink('link copied — paste it in your Insta story or bio!'); return; }
   if (kind === 'copy') { copyShareLink(); return; }
   closeShare();
   const link = targets[kind];
@@ -1205,13 +1202,13 @@ function shareVia(kind) {
   else { window.open(link, '_blank', 'noopener,noreferrer,width=620,height=540'); }
 }
 
-function copyShareLink() {
+function copyShareLink(msg) {
   const url = window.location.href;
   navigator.clipboard.writeText(url).then(() => {
     const btn = document.querySelector('.share-btn');
     btn.classList.add('copied');
-    btn.textContent = 'link copied!';
-    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = "share with cool people"; }, 2200);
+    btn.textContent = msg || 'link copied!';
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = "share with cool people"; }, 2600);
   }).catch(() => { prompt('Copy this link:', url); });
 }
 const bgm = document.getElementById('bgm');
