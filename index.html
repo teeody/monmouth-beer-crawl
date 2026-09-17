@@ -116,6 +116,68 @@ body{
   font-weight:600;opacity:.8;margin-top:2px;
 }
 
+/* ════════════ COUNTDOWN ════════════ */
+.hero-count{
+  margin-top:26px;font-family:'Permanent Marker',cursive;
+  font-size:clamp(1.05rem,3.6vw,1.8rem);letter-spacing:1px;color:var(--gold-light);
+  animation:popIn .8s cubic-bezier(.17,.67,.35,1.5) .45s both;
+}
+.hero-count b{font-size:1.2em;color:#FFB347}
+.hero-count .cd-label{
+  display:block;font-size:.48em;letter-spacing:3px;text-transform:uppercase;
+  color:var(--cream-mid);opacity:.75;margin-bottom:6px;
+}
+
+/* ════════════ CURSOR WAVE ════════════ */
+.cursor-wave{
+  position:fixed;top:0;left:0;width:170px;height:170px;border-radius:50%;
+  pointer-events:none;z-index:130;opacity:0;
+  background:radial-gradient(circle,rgba(23,162,184,.16) 0%,rgba(23,162,184,0) 68%);
+  transition:opacity .5s ease;
+}
+
+/* ════════════ MAP STOPS ════════════ */
+.map-stop{cursor:pointer;transform-box:fill-box;transform-origin:center;transition:transform .18s ease,opacity .18s ease}
+.map-stop:hover{transform:scale(1.22);opacity:.95}
+.map-stop.active{animation:pinPulse .9s ease 3}
+@keyframes pinPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.45)}}
+.route-bike-wrap{pointer-events:none}
+.stop-card.flash{outline:3px solid var(--gold);outline-offset:4px}
+
+/* ════════════ FISH JUMP ════════════ */
+.fish-scene{cursor:pointer;transform-box:fill-box;transform-origin:50% 50%}
+.fish-scene.jump{animation:fishJump 1.1s cubic-bezier(.22,.61,.36,1)}
+@keyframes fishJump{
+  0%{transform:translateY(0) scale(1)}
+  22%{transform:translateY(-30px) scale(1.06) rotate(-6deg)}
+  42%{transform:translateY(-40px) scale(1.12) rotate(4deg)}
+  70%{transform:translateY(-6px) scale(1.02)}
+  100%{transform:translateY(0) scale(1)}
+}
+.fish-scene .splash-note{opacity:0;pointer-events:none}
+.fish-scene.jump .splash-note{animation:splashNote 1.1s ease-out both}
+@keyframes splashNote{
+  0%{opacity:1;transform:translateY(0) scale(.7)}
+  100%{opacity:0;transform:translateY(-34px) scale(1.25)}
+}
+
+/* ════════════ EASTER EGGS ════════════ */
+.ics-btn{
+  display:inline-block;margin-top:6px;
+  background:transparent;color:var(--teal);
+  border:2px solid var(--teal);border-radius:50px;
+  font-family:inherit;font-weight:700;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  padding:12px 26px;cursor:pointer;transition:background .2s,color .2s;
+}
+.ics-btn:hover{background:var(--teal);color:var(--cream)}
+.bike-rain{position:fixed;top:-8%;z-index:140;pointer-events:none;animation:bikeFall linear forwards;will-change:transform}
+@keyframes bikeFall{to{transform:translateY(115vh) rotate(360deg)}}
+.confetti-bit{position:fixed;z-index:141;pointer-events:none;animation:confettiPop .8s cubic-bezier(.16,.84,.44,1) forwards}
+@keyframes confettiPop{
+  0%{opacity:1;transform:translate(0,0) scale(1) rotate(0)}
+  100%{opacity:0;transform:translate(var(--dx),calc(var(--dy) - 46px)) scale(.4) rotate(var(--rot))}
+}
+
 .hero-scroll{
   position:absolute;bottom:36px;z-index:2;
   display:flex;flex-direction:column;align-items:center;gap:8px;
@@ -597,6 +659,8 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </audio>
 <button class="music-btn" onclick="toggleMusic()" aria-label="Toggle music" title="Toggle music">🎵</button>
 
+<div class="cursor-wave" id="cursorWave" aria-hidden="true"></div>
+
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
   <div class="hero-content">
@@ -611,6 +675,10 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
       <div class="hero-stat"><div class="num">6</div><div class="label">Stops</div></div>
       <div class="hero-stat"><div class="num">4</div><div class="label">Dive Bars</div></div>
       <div class="hero-stat"><div class="num">2</div><div class="label">Breweries</div></div>
+    </div>
+    <div class="hero-count" id="rideCountdown">
+      <span class="cd-label">Next ride in</span>
+      <span id="cdValue">…</span>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="arrow"></div></div>
@@ -794,41 +862,52 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
             <g transform="translate(630,385)">
               <g>
                 <animateMotion dur="18s" repeatCount="indefinite" begin="1.5s" path="M0,0 C55,0 70,30 70,65 C70,120 55,135 0,135 C-55,135 -70,120 -70,65 C-70,30 -55,0 0,0 Z"/>
-                <path d="M10,2 Q0,-8 -10,0 Q-16,6 -22,3" fill="none" stroke="#1A252F" stroke-width="1" opacity="0.55"/>
-                <polygon points="14,0 4,-6 4,6" fill="#E2A33C"/>
-                <ellipse cx="25" cy="0" rx="11" ry="7" fill="#FFB347"/>
-                <path d="M22,-7 Q25,-12 28,-7 Z" fill="#E2A33C" stroke="#1A252F" stroke-width="0.5"/>
-                <circle cx="31" cy="-2" r="1.6" fill="#1A252F"/>
-                <path d="M-2,0 Q-16,10 -34,0 L-30,-2 Q-16,8 -6,-2 Z" fill="#7A5B38"/>
-                <path d="M-6,-2 Q-16,8 -30,-2" fill="none" stroke="#1A252F" stroke-width="0.8" opacity="0.6"/>
-                <rect x="-19" y="-5" width="8" height="8" rx="3" fill="#1A252F"/>
-                <circle cx="-15" cy="-9" r="3.2" fill="#F6DDA8"/>
-                <path d="M-18,-12 Q-15,-14 -12,-10" fill="none" stroke="#1A252F" stroke-width="1.2"/>
+                <g class="fish-scene" onclick="fishJump(event)" title="give the fish a poke">
+                  <path d="M10,2 Q0,-8 -10,0 Q-16,6 -22,3" fill="none" stroke="#1A252F" stroke-width="1" opacity="0.55"/>
+                  <polygon points="14,0 4,-6 4,6" fill="#E2A33C"/>
+                  <ellipse cx="25" cy="0" rx="11" ry="7" fill="#FFB347"/>
+                  <path d="M22,-7 Q25,-12 28,-7 Z" fill="#E2A33C" stroke="#1A252F" stroke-width="0.5"/>
+                  <circle cx="31" cy="-2" r="1.6" fill="#1A252F"/>
+                  <path d="M-2,0 Q-16,10 -34,0 L-30,-2 Q-16,8 -6,-2 Z" fill="#7A5B38"/>
+                  <path d="M-6,-2 Q-16,8 -30,-2" fill="none" stroke="#1A252F" stroke-width="0.8" opacity="0.6"/>
+                  <rect x="-19" y="-5" width="8" height="8" rx="3" fill="#1A252F"/>
+                  <circle cx="-15" cy="-9" r="3.2" fill="#F6DDA8"/>
+                  <path d="M-18,-12 Q-15,-14 -12,-10" fill="none" stroke="#1A252F" stroke-width="1.2"/>
+                  <text x="34" y="-14" class="splash-note" text-anchor="middle" font-family="'Permanent Marker',cursive" font-size="13" fill="#1A252F">wheee~!</text>
+                </g>
               </g>
             </g>
           </g>
           <path d="M290,477 C310,455 335,430 348,405 C358,385 340,370 322,355 L318,361 C310,375 295,390 280,399 C268,415 240,350 220,280 C205,225 195,165 202,100 C210,135 235,170 260,200 C285,230 290,310 290,400 L290,477" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.5"/>
           <path d="M290,477 C310,455 335,430 348,405 C358,385 340,370 322,355 L318,361 C310,375 295,390 280,399 C268,415 240,350 220,280 C205,225 195,165 202,100 C210,135 235,170 260,200 C285,230 290,310 290,400 L290,477" fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="12,9" stroke-linecap="round" filter="url(#glow)"/>
-          <circle cx="290" cy="477" r="19" fill="#FFB347" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
+          <g class="route-bike-wrap">
+            <animateMotion dur="36s" repeatCount="indefinite" begin="1s" path="M290,477 C310,455 335,430 348,405 C358,385 340,370 322,355 L318,361 C310,375 295,390 280,399 C268,415 240,350 220,280 C205,225 195,165 202,100 C210,135 235,170 260,200 C285,230 290,310 290,400 L290,477"/>
+            <g class="route-bike" aria-hidden="true">
+              <circle cx="0" cy="3" r="4.4" fill="#FBF6EC" stroke="#1A252F" stroke-width="1.5"/>
+              <circle cx="15" cy="3" r="4.4" fill="#FBF6EC" stroke="#1A252F" stroke-width="1.5"/>
+              <path d="M0,3 L8,2.6 M8,2.6 L8,-7.2 M8,2.6 L15,3 M14.5,-7 L15,3 M14.5,-7 L8,2.6 M14.5,-7 L17.2,-9 M6.2,-8.2 L10,-8.8" fill="none" stroke="#1A252F" stroke-width="1.5" stroke-linecap="round"/>
+            </g>
+          </g>
+          <circle cx="290" cy="477" r="19" fill="#FFB347" stroke="#fff" stroke-width="3" filter="url(#shadow)" class="map-stop" data-stop="1" title="Birdsmouth Beer — 675 Oceanport Way, Oceanport · Start"/>
           <text x="290" y="484" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="17">1</text>
           <text x="290" y="512" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="11">BIRDSMOUTH</text>
           <text x="290" y="526" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8" opacity="0.6">BEER</text>
           <rect x="308" y="459" width="22" height="14" rx="3" fill="#FFB347"/>
           <text x="319" y="469" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8" letter-spacing="1">START</text>
-          <circle cx="348" cy="405" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
+          <circle cx="348" cy="405" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)" class="map-stop" data-stop="2" title="Nip N Tuck"/>
           <text x="348" y="411" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">2</text>
           <text x="372" y="400" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">NIP N TUCK</text>
-          <circle cx="322" cy="355" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
+          <circle cx="322" cy="355" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)" class="map-stop" data-stop="3" title="Bond St Bar"/>
           <text x="322" y="361" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">3</text>
           <text x="346" y="350" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">BOND ST</text>
-          <circle cx="318" cy="361" r="13" fill="#FF6B6B" stroke="#fff" stroke-width="2.5" filter="url(#shadow)"/>
+          <circle cx="318" cy="361" r="13" fill="#FF6B6B" stroke="#fff" stroke-width="2.5" filter="url(#shadow)" class="map-stop" data-stop="4" title="Georgies"/>
           <text x="318" y="366" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="12">4</text>
           <text x="296" y="341" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">GEORGIES</text>
-          <circle cx="280" cy="399" r="16" fill="#17A2B8" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
+          <circle cx="280" cy="399" r="16" fill="#17A2B8" stroke="#fff" stroke-width="3" filter="url(#shadow)" class="map-stop" data-stop="5" title="Erratic Fermentations"/>
           <text x="280" y="405" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">5</text>
           <text x="256" y="392" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="9">ERRATIC</text>
           <text x="256" y="403" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="9">FERMENTATIONS</text>
-          <circle cx="202" cy="100" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
+          <circle cx="202" cy="100" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)" class="map-stop" data-stop="6" title="The Globe Hotel"/>
           <text x="202" y="106" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">6</text>
           <text x="179" y="93" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">THE GLOBE</text>
           <text x="179" y="104" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">HOTEL</text>
@@ -1061,6 +1140,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
     <div class="section-eyebrow fade-in" style="text-align:center">Join the Ride</div>
     <div class="section-heading fade-in" style="text-align:center">In? Let Us Know.</div>
     <div class="signup-desc fade-in">Pick a Sunday, drop your info, and we'll see you out there. No spam, no BS — just beers and bikes. This is a pretty casual, self-guided kind of thing. If you've got a lot of questions or need special accommodations, this probably isn't the right fit — and that's totally okay.</div>
+    <div style="text-align:center;margin-top:18px"><button type="button" class="ics-btn" onclick="downloadICS()">📅 add the season to your calendar</button></div>
 
     <form class="signup-form fade-in" id="signupForm" action="https://formsubmit.co/teeody%2Bgithub@proton.me" method="POST">
       <div class="form-row">
@@ -1235,6 +1315,179 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     .then(() => { form.style.display = 'none'; document.getElementById('signupSuccess').style.display = 'block'; })
     .catch(() => { form.style.display = 'none'; document.getElementById('signupSuccess').style.display = 'block'; });
 });
+
+/* ─────────── bike crawl easter eggs & extras ─────────── */
+
+function rideDates(){
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const out = [];
+  document.querySelectorAll('select[name="ride_date"] option').forEach(function(o){
+    const m = o.value.match(/^Sun (\w{3}) (\d{1,2})$/);
+    if (!m) return;
+    const mi = months.findIndex(function(x){ return x.slice(0,3) === m[1]; });
+    if (mi !== -1) out.push(new Date(2027, mi, +m[2], 10, 0, 0));
+  });
+  return out;
+}
+let countTimer = null;
+function tickCountdown(){
+  const el = document.getElementById('cdValue');
+  const cd = document.getElementById('rideCountdown');
+  if (!el || !cd) return;
+  const now = new Date();
+  const next = rideDates().find(function(d){ return d > now; });
+  if (!next){
+    el.innerHTML = 'season&#39;s in the books — see you for <b>2028</b>';
+    cd.querySelector('.cd-label').textContent = 'Last weekend of riding';
+    clearInterval(countTimer);
+    return;
+  }
+  const diff = next - now;
+  const d = Math.floor(diff / 864e5), h = Math.floor(diff % 864e5 / 36e5);
+  const m = Math.floor(diff % 36e5 / 6e4), s = Math.floor(diff % 6e4 / 1e3);
+  cd.querySelector('.cd-label').textContent = 'Next ride — ' + next.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'}) + ' @ 10am';
+  el.innerHTML = '<b>' + d + '</b>d : <b>' + h + '</b>h : <b>' + m + '</b>m : <b>' + s + '</b>s';
+}
+countTimer = setInterval(tickCountdown, 1000);
+tickCountdown();
+
+function downloadICS(){
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pints and Pedals//Bike Crawl 2027//EN',
+    'CALSCALE:GREGORIAN','METHOD:PUBLISH',
+    'BEGIN:VEVENT',
+    'UID:pints-and-pedals-2027@teeody.github.io',
+    'DTSTAMP:' + stamp,
+    'DTSTART;TZID=America/New_York:20270418T100000',
+    'DTEND;TZID=America/New_York:20270418T180000',
+    'RRULE:FREQ=WEEKLY;BYDAY=SU;UNTIL=20271101T045959Z',
+    'SUMMARY:Pints & Pedals Bike Crawl',
+    'DESCRIPTION:6 stops, 28 miles, 0 accommodations. Self-guided Monmouth County bike crawl, Sundays Apr-Oct 2027.',
+    'LOCATION:Birdsmouth Beer, 675 Oceanport Way, Oceanport NJ 07757',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'pints-and-pedals-2027.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+}
+
+function confettiBurst(x, y, colors){
+  for (let i = 0; i < 26; i++){
+    const s = document.createElement('span');
+    s.className = 'confetti-bit';
+    s.style.left = (x + (Math.random() * 80 - 40)) + 'px';
+    s.style.top = (y + (Math.random() * 60 - 30)) + 'px';
+    s.style.background = colors[Math.floor(Math.random() * colors.length)];
+    s.style.width = (6 + Math.random() * 8) + 'px';
+    s.style.height = (6 + Math.random() * 8) + 'px';
+    s.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+    s.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+    s.style.setProperty('--dy', -(Math.random() * 140 + 40) + 'px');
+    s.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+    document.body.appendChild(s);
+    setTimeout(function(){ s.remove(); }, 900);
+  }
+}
+
+function bikeRain(n){
+  n = n || 24;
+  for (let i = 0; i < n; i++){
+    const b = document.createElement('span');
+    b.className = 'bike-rain'; b.textContent = '🚴';
+    b.style.left = (Math.random() * 100) + 'vw';
+    b.style.fontSize = (14 + Math.random() * 18) + 'px';
+    b.style.animationDuration = (2.4 + Math.random() * 2.4) + 's';
+    b.style.animationDelay = (Math.random() * 1) + 's';
+    b.style.opacity = .5 + Math.random() * .5;
+    b.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(b);
+    setTimeout(function(){ b.remove(); }, 5600);
+  }
+}
+
+function pokeFish(){
+  const fs = document.querySelector('.fish-scene');
+  if (!fs) return;
+  fs.classList.remove('jump');
+  void fs.getBoundingClientRect();
+  fs.classList.add('jump');
+}
+function fishJump(ev){
+  pokeFish();
+  if (ev && ev.clientX) confettiBurst(ev.clientX, ev.clientY, ['#FFB347','#E2A33C','#17A2B8','#5DADE2','#FAFCFE']);
+}
+
+function goStop(n){
+  const el = document.getElementById('stop-' + n);
+  if (!el) return;
+  el.scrollIntoView({behavior:'smooth', block:'center'});
+  el.classList.remove('flash'); void el.getBoundingClientRect(); el.classList.add('flash');
+  const dot = document.querySelector('.map-stop[data-stop="' + n + '"]');
+  if (dot){
+    dot.classList.remove('active'); void dot.getBoundingClientRect(); dot.classList.add('active');
+    setTimeout(function(){ dot.classList.remove('active'); }, 3200);
+  }
+  setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+  if (Math.random() < .25) confettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['#FFB347','#17A2B8','#FF6B6B','#5DADE2']);
+}
+document.querySelectorAll('.map-stop').forEach(function(d){
+  d.addEventListener('click', function(){ goStop(d.dataset.stop); });
+});
+document.querySelectorAll('.stop-card').forEach(function(c){
+  c.addEventListener('click', function(){
+    const dot = document.querySelector('.map-stop[data-stop="' + c.id.replace('stop-','') + '"]');
+    if (dot){
+      dot.classList.remove('active'); void dot.getBoundingClientRect(); dot.classList.add('active');
+      setTimeout(function(){ dot.classList.remove('active'); }, 2800);
+    }
+  });
+});
+
+let keyBuf = '', keyCooldown = 0;
+document.addEventListener('keydown', function(e){
+  if (e.key && e.key.length === 1 && !e.ctrlKey && !e.metaKey){
+    keyBuf = (keyBuf + e.key).toLowerCase().slice(-12);
+    if (Date.now() < keyCooldown) return;
+    if (keyBuf.endsWith('pints')){ bikeRain(24); keyCooldown = Date.now() + 12000; keyBuf = ''; }
+    else if (keyBuf.endsWith('fish')){ pokeFish(); setTimeout(function(){ pokeFish(); }, 650); keyBuf = ''; }
+  }
+});
+
+let shareClicks = [], starFired = false;
+document.querySelector('.share-btn').addEventListener('click', function(){
+  const now = Date.now();
+  shareClicks = shareClicks.filter(function(t){ return now - t < 2200; });
+  shareClicks.push(now);
+  if (shareClicks.length >= 5 && !starFired){
+    starFired = true; setTimeout(function(){ starFired = false; }, 4000);
+    const b = document.querySelector('.share-btn').getBoundingClientRect();
+    confettiBurst(b.left + b.width / 2, b.top + b.height / 2, ['#E2A33C','#FFB347','#5DADE2','#17A2B8','#FF6B6B','#FAFCFE']);
+  }
+});
+
+(function(){
+  const w = document.getElementById('cursorWave');
+  if (!w) return;
+  if (window.matchMedia('(hover: none)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let tx = innerWidth / 2, ty = innerHeight / 2, x = tx, y = ty, shown = false, raf = null;
+  function move(){
+    x += (tx - x) * .14; y += (ty - y) * .14;
+    w.style.transform = 'translate(' + (x - 85) + 'px,' + (y - 85) + 'px)';
+    raf = requestAnimationFrame(move);
+  }
+  addEventListener('mousemove', function(e){
+    tx = e.clientX; ty = e.clientY;
+    if (!shown){ shown = true; w.style.opacity = 1; }
+    if (!raf) raf = requestAnimationFrame(move);
+  }, {passive:true});
+  document.addEventListener('mouseleave', function(){ shown = false; w.style.opacity = 0; });
+  addEventListener('touchstart', function(){ w.style.opacity = 0; shown = false; }, {passive:true});
+})();
+
 document.getElementById('interestCount').textContent = Math.floor(Math.random() * (3456 - 43 + 1)) + 43;
 </script>
 </body>
