@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#D35400">
+<meta name="theme-color" content="#1A5276">
 <title>End of Summer Beer Bike Crawl — Monmouth County, NJ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,16 +11,16 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --cream:#FFF8EE;--cream-mid:#F5E6CC;--cream-dark:#E8D5B7;
-  --orange:#D35400;--orange-light:#E67E22;--orange-glow:rgba(211,84,0,.15);
-  --gold:#DAA520;--gold-light:#F1C40F;
-  --green:#6B8E23;--green-light:#8DB336;
-  --teal:#16A085;--teal-light:#1ABC9C;
-  --brown:#3E2723;--brown-mid:#5D4037;--brown-light:#795548;--brown-pale:#8D6E63;
-  --rust:#B7410E;--pink:#E91E63;
-  --white:#FFFAF0;
-  --shadow:0 6px 0 rgba(62,39,35,.1);
-  --shadow-lg:0 8px 0 rgba(62,39,35,.12);
+  --cream:#F0F4F8;--cream-mid:#D6E4F0;--cream-dark:#B8CCE0;
+  --orange:#1A5276;--orange-light:#2980B9;--orange-glow:rgba(26,82,118,.15);
+  --gold:#5DADE2;--gold-light:#85C1E9;
+  --green:#148F77;--green-light:#1ABC9C;
+  --teal:#17A2B8;--teal-light:#20C997;
+  --brown:#1A252F;--brown-mid:#2C3E50;--brown-light:#566573;--brown-pale:#7F8C8D;
+  --rust:#154360;--pink:#E91E63;
+  --white:#FAFCFE;
+  --shadow:0 6px 0 rgba(26,37,47,.1);
+  --shadow-lg:0 8px 0 rgba(26,37,47,.12);
 }
 html{scroll-behavior:smooth}
 body{
@@ -43,10 +43,10 @@ body{
 .hero::before{
   content:'';position:absolute;inset:-50%;
   background:repeating-conic-gradient(
-    var(--orange) 0deg 10deg,
-    var(--rust) 10deg 20deg
+    var(--orange-light) 0deg 10deg,
+    var(--teal) 10deg 20deg
   );
-  opacity:.12;
+  opacity:.14;
   animation:sunburstSpin 120s linear infinite;
 }
 @keyframes sunburstSpin{to{transform:rotate(360deg)}}
@@ -248,7 +248,7 @@ body{
   position:relative;
 }
 .stop-card:hover{
-  transform:translateY(-4px);box-shadow:0 12px 0 rgba(62,39,35,.1);
+  transform:translateY(-4px);box-shadow:0 12px 0 rgba(26,37,47,.1);
   border-color:var(--orange);
 }
 
@@ -278,8 +278,8 @@ body{
   letter-spacing:2px;padding:4px 12px;border-radius:50px;
   font-weight:700;margin-bottom:8px;
 }
-.tag-dive{background:rgba(211,84,0,.1);color:var(--orange);border:2px solid rgba(211,84,0,.2)}
-.tag-brewery{background:rgba(107,142,35,.1);color:var(--green);border:2px solid rgba(107,142,35,.2)}
+.tag-dive{background:rgba(26,82,118,.1);color:var(--orange);border:2px solid rgba(26,82,118,.2)}
+.tag-brewery{background:rgba(20,143,119,.1);color:var(--green);border:2px solid rgba(20,143,119,.2)}
 
 .stop-content h3{
   font-family:'Righteous',cursive;font-size:1.5rem;
@@ -305,10 +305,10 @@ body{
 .highlight-chip{
   font-size:.64rem;padding:4px 10px;background:var(--cream);
   border:2px solid var(--cream-dark);border-radius:50px;
-  color:(--brown-pale);white-space:nowrap;font-weight:600;
+  color:var(--brown-pale);white-space:nowrap;font-weight:600;
 }
 a.chip-link{
-  background:rgba(218,165,32,.1);border-color:rgba(218,165,32,.3);
+  background:rgba(93,173,226,.1);border-color:rgba(93,173,226,.3);
   color:var(--gold);text-decoration:none;cursor:pointer;font-weight:700;
   transition:all .2s;
 }
@@ -327,7 +327,7 @@ a.chip-link:hover{background:var(--gold);color:var(--brown);border-color:var(--g
 .route-connector .dist{color:var(--orange)}
 .route-link{
   color:var(--orange);text-decoration:none;font-weight:700;
-  border-bottom:3px dotted rgba(211,84,0,.3);transition:all .2s;
+  border-bottom:3px dotted rgba(26,82,118,.3);transition:all .2s;
 }
 .route-link:hover{color:var(--gold);border-color:var(--gold)}
 .route-link .route-time{color:var(--brown-pale);font-size:.82em;opacity:.7;font-weight:500}
@@ -349,7 +349,7 @@ a.chip-link:hover{background:var(--gold);color:var(--brown);border-color:var(--g
   .highlight-chip{font-size:.62rem;padding:3px 8px}
   .stop-highlights .highlight-chip:not(.chip-link){display:none}
   .stop-highlights a.chip-link{
-    background:none;border:2px solid rgba(218,165,32,.3);
+    background:none;border:2px solid rgba(93,173,226,.3);
     padding:5px 12px;font-size:.74rem;
   }
   .route-connector{flex-direction:column;gap:4px;font-size:.78rem;padding:10px 14px;text-align:center}
@@ -427,7 +427,7 @@ a.chip-link:hover{background:var(--gold);color:var(--brown);border-color:var(--g
 /* ════════════ SIGN UP ════════════ */
 .signup-section{
   background:
-    repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(211,84,0,.03) 20px,rgba(211,84,0,.03) 40px),
+    repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(26,82,118,.03) 20px,rgba(26,82,118,.03) 40px),
     var(--cream-mid);
   border-top:6px solid var(--green);border-bottom:6px solid var(--orange);
   padding:60px 16px;text-align:center;
@@ -467,8 +467,8 @@ a.chip-link:hover{background:var(--gold);color:var(--brown);border-color:var(--g
 .signup-note{font-size:.65rem;color:var(--brown-pale);margin-top:10px;font-weight:500}
 
 .signup-success{
-  display:none;padding:24px;background:rgba(107,142,35,.08);
-  border:4px solid rgba(107,142,35,.3);border-radius:20px;text-align:center;
+  display:none;padding:24px;background:rgba(20,143,119,.08);
+  border:4px solid rgba(20,143,119,.3);border-radius:20px;text-align:center;
 }
 .signup-success .success-icon{font-size:2.5rem;display:block;margin-bottom:10px}
 .signup-success h3{
@@ -513,7 +513,7 @@ a.chip-link:hover{background:var(--gold);color:var(--brown);border-color:var(--g
 }
 .mention-link:hover{
   border-color:var(--orange);transform:translateY(-3px);
-  box-shadow:5px 5px 0 rgba(62,39,35,.12);
+  box-shadow:5px 5px 0 rgba(26,37,47,.12);
 }
 .mention-name{
   font-family:'Righteous',cursive;font-size:1rem;
@@ -573,7 +573,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </div>
 
 <!-- wave: brown → cream-mid -->
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="#F5E6CC"/><path d="M0,50 C360,80 720,20 1080,50 C1260,65 1380,55 1440,50 L1440,80 L0,80Z" fill="#F5E6CC" opacity=".5"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="#D6E4F0"/><path d="M0,50 C360,80 720,20 1080,50 C1260,65 1380,55 1440,50 L1440,80 L0,80Z" fill="#D6E4F0" opacity=".5"/></svg></div>
 
 <!-- ═══════════════════ PHOTO GALLERY ═══════════════════ -->
 <div class="gallery-section">
@@ -679,7 +679,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </div>
 
 <!-- wave: cream-mid → cream -->
-<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60Z" fill="#FFF8EE"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60Z" fill="#F0F4F8"/></svg></div>
 
 <!-- ═══════════════════ MAP ═══════════════════ -->
 <section class="map-section" id="map-section">
@@ -694,7 +694,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
             <stop offset="0%" stop-color="#90E0EF"/><stop offset="100%" stop-color="#0077B6"/>
           </linearGradient>
           <linearGradient id="sandGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#F5E6CA"/><stop offset="100%" stop-color="#E8D5B7"/>
+            <stop offset="0%" stop-color="#D6E4F0"/><stop offset="100%" stop-color="#B8CCE0"/>
           </linearGradient>
           <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#023047" flood-opacity="0.4"/></filter>
@@ -703,7 +703,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
         <g clip-path="url(#mapClip)">
           <rect width="800" height="600" fill="url(#sandGrad)"/><rect width="800" height="600" fill="url(#dots)"/>
           <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600 L800,600 L800,0 Z" fill="url(#oceanGrad)" opacity="0.45"/>
-          <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600" fill="none" stroke="#E8D5B7" stroke-width="5" opacity="0.9"/>
+          <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600" fill="none" stroke="#B8CCE0" stroke-width="5" opacity="0.9"/>
           <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600" fill="none" stroke="#0077B6" stroke-width="1.5" opacity="0.5" stroke-dasharray="8,6"/>
           <path d="M460,30 Q475,22 490,30 Q505,38 520,30" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.2"/>
           <path d="M440,80 Q460,70 480,80 Q500,90 520,80" fill="none" stroke="#0077B6" stroke-width="1.2" opacity="0.18"/>
@@ -797,7 +797,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </section>
 
 <!-- wave: cream → brown (for stops dark bg if desired, or keep cream) -->
-<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,0 720,60 1080,20 C1260,10 1380,25 1440,20 L1440,60 L0,60Z" fill="#FFF8EE"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,0 720,60 1080,20 C1260,10 1380,25 1440,20 L1440,60 L0,60Z" fill="#F0F4F8"/></svg></div>
 
 <!-- ═══════════════════ STOPS ═══════════════════ -->
 <section class="section" id="stops">
@@ -917,7 +917,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </section>
 
 <!-- wave: cream → cream-mid -->
-<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C480,0 960,60 1440,20 L1440,60 L0,60Z" fill="#F5E6CC"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C480,0 960,60 1440,20 L1440,60 L0,60Z" fill="#D6E4F0"/></svg></div>
 
 <!-- ═══════════════════ TIPS ═══════════════════ -->
 <section class="section" id="tips" style="background:var(--cream-mid);max-width:100%;padding-left:0;padding-right:0">
@@ -936,7 +936,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </section>
 
 <!-- wave: cream-mid → cream -->
-<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C360,60 720,0 1080,40 C1260,50 1380,30 1440,35 L1440,60 L0,60Z" fill="#FFF8EE"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C360,60 720,0 1080,40 C1260,50 1380,30 1440,35 L1440,60 L0,60Z" fill="#F0F4F8"/></svg></div>
 
 <!-- ═══════════════════ FAQ ═══════════════════ -->
 <section class="section" id="faq" style="background:var(--cream);max-width:100%;padding-left:0;padding-right:0">
@@ -961,7 +961,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </section>
 
 <!-- wave: cream → cream-mid -->
-<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C480,0 960,60 1440,25 L1440,60 L0,60Z" fill="#F5E6CC"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C480,0 960,60 1440,25 L1440,60 L0,60Z" fill="#D6E4F0"/></svg></div>
 
 <!-- ═══════════════════ SIGN UP ═══════════════════ -->
 <div class="signup-section" id="signup">
@@ -1025,7 +1025,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </div>
 
 <!-- wave: cream → cream-mid -->
-<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C480,0 960,60 1440,25 L1440,60 L0,60Z" fill="#F5E6CC"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C480,0 960,60 1440,25 L1440,60 L0,60Z" fill="#D6E4F0"/></svg></div>
 
 <!-- ═══════════════════ HONORABLE MENTIONS ═══════════════════ -->
 <section class="section" id="honorable" style="background:var(--cream-mid);max-width:100%;padding-left:0;padding-right:0">
@@ -1048,7 +1048,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 </section>
 
 <!-- wave: cream-mid → brown (footer) -->
-<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C360,60 720,0 1080,30 C1260,45 1380,25 1440,30 L1440,60 L0,60Z" fill="#3E2723"/></svg></div>
+<div class="wave-divider"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C360,60 720,0 1080,30 C1260,45 1380,25 1440,30 L1440,60 L0,60Z" fill="#1A252F"/></svg></div>
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
