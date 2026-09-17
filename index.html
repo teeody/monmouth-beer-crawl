@@ -549,7 +549,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <button class="share-btn" onclick="shareSite()" aria-label="Share this site">share with anyone that's cool</button>
 
 <audio id="bgm" loop preload="auto">
-  <source src="fightwave.mp3" type="audio/mpeg">
+  <source src="wave-rider.mp3" type="audio/mpeg">
 </audio>
 <button class="music-btn" onclick="toggleMusic()" aria-label="Toggle music" title="Toggle music">🎵</button>
 
@@ -1122,7 +1122,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <footer>
   <span class="footer-emoji">🍺</span>
   <p>Pints &amp; Pedals Bike Crawl — Monmouth County, NJ — 2027</p>
-  <p class="footer-sub">Music: "Fightwave" by Aila Scott (ailascott.itch.io) — CC BY 4.0</p>
+  <p class="footer-sub">Music: "Wave Rider" by Shane Ivers (silvermansound.com) — CC BY 4.0</p>
 </footer>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
@@ -1143,7 +1143,7 @@ function shareSite() {
   }
 }
 const bgm = document.getElementById('bgm');
-bgm.volume = 0.15;
+bgm.volume = 0.3;
 function toggleMusic() {
   const btn = document.querySelector('.music-btn');
   if (bgm.paused) { bgm.play(); btn.classList.add('playing'); btn.textContent = '⏸'; }
