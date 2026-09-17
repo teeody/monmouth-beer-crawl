@@ -548,10 +548,10 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 
 <button class="share-btn" onclick="shareSite()" aria-label="Share this site">share with anyone that's cool</button>
 
-<audio id="polka" loop preload="auto">
-  <source src="polka.mp3" type="audio/mpeg">
+<audio id="bgm" loop preload="auto">
+  <source src="fightwave.mp3" type="audio/mpeg">
 </audio>
-<button class="music-btn" onclick="toggleMusic()" aria-label="Toggle music" title="Toggle polka music">🎵</button>
+<button class="music-btn" onclick="toggleMusic()" aria-label="Toggle music" title="Toggle music">🎵</button>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
@@ -1074,7 +1074,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <footer>
   <span class="footer-emoji">🍺</span>
   <p>Pints &amp; Pedals Bike Crawl — Monmouth County, NJ — 2027</p>
-  <p class="footer-sub">Music: "Four Beers' Polka" by Kevin MacLeod (incompetech.com) — CC BY 3.0</p>
+  <p class="footer-sub">Music: "Fightwave" by Aila Scott (ailascott.itch.io) — CC BY 4.0</p>
 </footer>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
@@ -1094,12 +1094,12 @@ function shareSite() {
     }).catch(() => { prompt('Copy this link:', url); });
   }
 }
-const polka = document.getElementById('polka');
-polka.volume = 0.15;
+const bgm = document.getElementById('bgm');
+bgm.volume = 0.15;
 function toggleMusic() {
   const btn = document.querySelector('.music-btn');
-  if (polka.paused) { polka.play(); btn.classList.add('playing'); btn.textContent = '⏸'; }
-  else { polka.pause(); btn.classList.remove('playing'); btn.textContent = '🎵'; }
+  if (bgm.paused) { bgm.play(); btn.classList.add('playing'); btn.textContent = '⏸'; }
+  else { bgm.pause(); btn.classList.remove('playing'); btn.textContent = '🎵'; }
 }
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
