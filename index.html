@@ -709,18 +709,14 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
           <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="2.5" stdDeviation="2.5" flood-color="#1A252F" flood-opacity="0.4"/></filter>
           <filter id="shadowSoft" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#7A5B38" flood-opacity="0.25"/></filter>
           <pattern id="landDot" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="13" cy="13" r="1" fill="rgba(122,94,60,0.08)"/></pattern>
-          <pattern id="contour" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M8,40 Q40,12 72,40 T80,50" fill="none" stroke="rgba(150,120,82,0.1)" stroke-width="1.1"/></pattern>
         </defs>
         <g clip-path="url(#mapClip)">
-          <rect width="800" height="600" fill="url(#landGrad)"/><rect width="800" height="600" fill="url(#landDot)"/><rect width="800" height="600" fill="url(#contour)" opacity="0.6"/>
+          <rect width="800" height="600" fill="url(#landGrad)"/><rect width="800" height="600" fill="url(#landDot)"/>
           <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600 L800,600 L800,0 Z" fill="url(#oceanGrad)"/>
           <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600" fill="none" stroke="url(#beachGrad)" stroke-width="9"/>
-          <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600" fill="none" stroke="#8A6B3F" stroke-width="2" opacity="0.5" stroke-dasharray="4,8" stroke-linecap="round"/>
-          <path d="M60,60 Q112,96 78,152 Q50,206 92,242 Q130,276 96,320 Q70,354 96,388" fill="none" stroke="#8FBE88" stroke-width="12" opacity="0.4" stroke-linecap="round"/>
-          <path d="M34,500 Q84,506 98,470 Q112,432 82,410 Q50,386 38,354" fill="none" stroke="#8FBE88" stroke-width="12" opacity="0.32" stroke-linecap="round"/>
-          <circle cx="180" cy="300" r="54" fill="url(#parkGrad)" opacity="0.5"/>
-          <ellipse cx="250" cy="522" rx="62" ry="32" fill="url(#parkGrad)" opacity="0.45"/>
-          <ellipse cx="118" cy="192" rx="44" ry="26" fill="url(#parkGrad)" opacity="0.4"/>
+          <path d="M420,0 C405,60 380,120 370,180 C360,240 365,300 370,340 C378,390 365,420 345,450 C330,470 318,490 310,530 L310,600" fill="none" stroke="#FFF6E0" stroke-width="1.2" opacity="0.8"/>
+          <circle cx="180" cy="300" r="54" fill="url(#parkGrad)" opacity="0.45"/>
+          <ellipse cx="250" cy="522" rx="62" ry="32" fill="url(#parkGrad)" opacity="0.4"/>
           <path d="M-20,118 C40,58 116,6 156,-12 L176,-24 L-20,-24 Z" fill="url(#riverGrad)" opacity="0.7"/>
           <path d="M-20,118 C40,58 116,6 156,-12 L176,-24 L-20,-24 Z" fill="none" stroke="#77B9D2" stroke-width="2" opacity="0.7"/>
           <path d="M-10,66 Q44,80 88,44 Q122,16 152,-8" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.4"/>
@@ -735,66 +731,49 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
           <path d="M382,492 Q401,483 420,492 Q439,501 458,492" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"/>
           <path d="M360,552 Q379,543 398,552 Q417,561 436,552" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
           <g style="filter:url(#shadowSoft)">
+            <path d="M490,0 Q506,36 534,32 Q545,24 540,10 L532,-8 L520,-12 L492,-6 Z" fill="#F0D9A0" stroke="#E0BE77" stroke-width="1.5" opacity="0.95"/>
+            <text x="511" y="50" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8" opacity="0.75">SANDY HOOK</text>
             <g>
               <rect x="432" y="8" width="14" height="20" rx="3" fill="#E2A33C"/>
               <rect x="429" y="25" width="20" height="5" rx="2" fill="#E2A33C"/>
               <rect x="430" y="4" width="18" height="6" rx="2" fill="#1A252F" opacity="0.85"/>
               <circle cx="435" cy="13" r="1.6" fill="#FFF6E0"/>
               <circle cx="443" cy="13" r="1.6" fill="#FFF6E0"/>
-              <text x="444" y="42" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8">TWIN LIGHTS</text>
+              <text x="440" y="44" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8">TWIN LIGHTS</text>
             </g>
             <g>
-              <polygon points="152,109 154.1,114.7 160,114.6 155.5,118.1 157.4,123.6 152,120.1 146.6,123.6 148.5,118.1 144,114.6 149.9,114.7" fill="#E2A33C" stroke="#1A252F" stroke-width="0.8" opacity="0.9"/>
-              <text x="152" y="132" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8">COUNT BASIE</text>
+              <path d="M179,535 C179,548 191,548 191,535 L187,535 C187,543 183,543 183,535 Z" fill="#E2A33C" stroke="#1A252F" stroke-width="0.8" opacity="0.9"/>
+              <circle cx="179" cy="535" r="1.4" fill="#1A252F"/>
+              <circle cx="191" cy="535" r="1.4" fill="#1A252F"/>
+              <text x="185" y="556" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8">MONMOUTH PARK</text>
             </g>
             <g>
-              <polygon points="352,273 354.4,279.1 360.8,279 356,282.8 358.2,289 352,285.3 345.8,289 348,282.8 343.2,279 349.6,279.1" fill="#E2A33C" stroke="#1A252F" stroke-width="0.8" opacity="0.9"/>
-              <text x="352" y="298" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8">CONVENTION HALL</text>
-            </g>
-            <g>
-              <circle cx="354" cy="342" r="2.8" fill="#E2A33C" stroke="#1A252F" stroke-width="0.6"/>
-              <path d="M356.8,344 V330 Q363,328.5 365,331.5" fill="none" stroke="#1A252F" stroke-width="1.4"/>
-              <text x="354" y="356" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8">STONE PONY</text>
-            </g>
-            <g>
-              <path d="M344,456 L328,456 L336,444 Z" fill="#E2A33C" stroke="#1A252F" stroke-width="1" opacity="0.9"/>
-              <path d="M330,453 L342,453" stroke="#1A252F" stroke-width="0.6"/>
-              <rect x="336" y="456" width="2" height="6" fill="#1A252F" opacity="0.7"/>
-              <text x="336" y="470" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="7">AUDITORIUM</text>
-            </g>
-            <g>
-              <path d="M532,238 L548,238 L540,226 Z" fill="#1A252F" opacity="0.75"/>
-              <path d="M548,238 Q556,248 532,248 L532,238" fill="#1A252F" opacity="0.75"/>
-              <text x="540" y="258" text-anchor="middle" fill="#1F5F9E" font-family="'Permanent Marker',cursive" font-size="7" opacity="0.7">sail</text>
+              <path d="M532,238 L548,238 L540,226 Z" fill="#1A252F" opacity="0.7"/>
+              <path d="M548,238 Q556,248 532,248 L532,238" fill="#1A252F" opacity="0.7"/>
             </g>
           </g>
           <path d="M290,477 C310,455 335,430 348,405 C358,385 340,370 322,355 L318,361 C310,375 295,390 280,399 C268,415 240,350 220,280 C205,225 195,165 202,100 C210,135 235,170 260,200 C285,230 290,310 290,400 L290,477" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.5"/>
           <path d="M290,477 C310,455 335,430 348,405 C358,385 340,370 322,355 L318,361 C310,375 295,390 280,399 C268,415 240,350 220,280 C205,225 195,165 202,100 C210,135 235,170 260,200 C285,230 290,310 290,400 L290,477" fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="12,9" stroke-linecap="round" filter="url(#glow)"/>
           <circle cx="290" cy="477" r="19" fill="#FFB347" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
-          <circle cx="290" cy="477" r="23" fill="none" stroke="#FFB347" stroke-width="1" opacity="0.5"/>
           <text x="290" y="484" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="17">1</text>
           <text x="290" y="512" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="11">BIRDSMOUTH</text>
           <text x="290" y="526" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8" opacity="0.6">BEER</text>
           <rect x="308" y="459" width="22" height="14" rx="3" fill="#FFB347"/>
           <text x="319" y="469" text-anchor="middle" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="8" letter-spacing="1">START</text>
           <circle cx="348" cy="405" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
-          <circle cx="348" cy="405" r="20" fill="none" stroke="#FF6B6B" stroke-width="1" opacity="0.5"/>
           <text x="348" y="411" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">2</text>
           <text x="372" y="400" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">NIP N TUCK</text>
           <circle cx="322" cy="355" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
-          <circle cx="322" cy="355" r="20" fill="none" stroke="#FF6B6B" stroke-width="1" opacity="0.5"/>
           <text x="322" y="361" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">3</text>
           <text x="346" y="350" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">BOND ST</text>
           <circle cx="318" cy="361" r="13" fill="#FF6B6B" stroke="#fff" stroke-width="2.5" filter="url(#shadow)"/>
           <text x="318" y="366" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="12">4</text>
           <text x="296" y="341" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">GEORGIES</text>
           <circle cx="280" cy="399" r="16" fill="#17A2B8" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
-          <circle cx="280" cy="399" r="20" fill="none" stroke="#17A2B8" stroke-width="1" opacity="0.5"/>
           <text x="280" y="405" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">5</text>
           <text x="256" y="392" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="9">ERRATIC</text>
           <text x="256" y="403" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="9">FERMENTATIONS</text>
           <circle cx="202" cy="100" r="16" fill="#FF6B6B" stroke="#fff" stroke-width="3" filter="url(#shadow)"/>
-          <circle cx="202" cy="100" r="20" fill="none" stroke="#FF6B6B" stroke-width="1" opacity="0.5"/>
           <text x="202" y="106" text-anchor="middle" fill="#fff" font-family="'Permanent Marker',cursive" font-size="15">6</text>
           <text x="179" y="93" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">THE GLOBE</text>
           <text x="179" y="104" text-anchor="end" fill="#1A252F" font-family="'Permanent Marker',cursive" font-size="10">HOTEL</text>
@@ -840,13 +819,6 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
             <path d="M0,-30 Q-8,-50 -18,-42" fill="none" stroke="#1A252F" stroke-width="1.5"/>
             <path d="M0,-30 Q8,-50 18,-42" fill="none" stroke="#1A252F" stroke-width="1.5"/>
           </g>
-          <circle cx="680" cy="510" r="22" fill="#E2A33C" opacity="0.18"/>
-          <circle cx="680" cy="510" r="16" fill="#E2A33C" opacity="0.12"/>
-          <circle cx="100" cy="200" r="1" fill="#1A252F" opacity="0.07"/>
-          <circle cx="150" cy="350" r="1.2" fill="#1A252F" opacity="0.06"/>
-          <circle cx="80" cy="450" r="0.8" fill="#1A252F" opacity="0.08"/>
-          <circle cx="180" cy="500" r="1" fill="#1A252F" opacity="0.06"/>
-          <circle cx="120" cy="150" r="1.1" fill="#1A252F" opacity="0.07"/>
         </g>
       </svg>
     </div>
