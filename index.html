@@ -67,6 +67,20 @@ body{
   animation:popIn .6s cubic-bezier(.17,.67,.35,1.5) both;
 }
 
+/* ════════════ TODD STAR ════════════ */
+.todd-star{
+  display:flex;align-items:center;justify-content:center;
+  width:86px;height:86px;margin:0 auto 22px;
+  background:linear-gradient(160deg,var(--gold-light),var(--teal));
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  animation:popIn .6s cubic-bezier(.17,.67,.35,1.5) .05s both;
+}
+.todd-star span{
+  font-family:'Permanent Marker',cursive;font-weight:700;
+  font-size:.82rem;letter-spacing:1px;color:var(--brown);
+  transform:translateY(2px);
+}
+
 .hero h1{
   font-family:'Permanent Marker',cursive;font-size:clamp(3rem,10vw,7.5rem);
   line-height:.88;color:var(--cream);letter-spacing:2px;
@@ -664,6 +678,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
   <div class="hero-content">
+    <div class="todd-star"><span>todd</span></div>
     <div class="hero-badge">Monmouth County, NJ — Pints &amp; Pedals 2027</div>
     <h1>
       <span class="accent">Pints &amp; Pedals</span>Bike Crawl
