@@ -5,7 +5,7 @@ plus `photos/` and `wave-rider.mp3` (music).
 
 - Live: https://teeody.github.io/monmouth-beer-crawl/ (GitHub Pages)
 - Remote: https://github.com/teeody/monmouth-beer-crawl.git
-- Repository: /home/todd/monmouth-beer-crawl/
+- Repository: /home/todd/Work/monmouth-beer-crawl/
 
 ## Deploy workflow (ALWAYS)
 
