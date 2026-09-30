@@ -43,15 +43,16 @@ Inline script is the only `<script>` block (starts ~line 1253, ends `</script>`)
 sed -n '/<script>/,/<\/script>/p' index.html | sed '1d;$d' > /tmp/site.js && node --check /tmp/site.js
 ```
 
-Key JS functions: `rideDates`, `tickCountdown` (countdown), `downloadICS`
-(.ics file), `goStop(n)` (clickable map stops), `pokeFish`/`fishJump` (fish),
+Key JS functions: `downloadICS` (.ics file), `goStop(n)` (clickable map
+stops), `pokeFish`/`fishJump`/`move` (fish, incl. cursor-following rAF loop),
 `bikeRain`/`confettiBurst` (easter eggs), `openShare`/`closeShare`/`shareVia`/
 `copyShareLink` (share menu), `toggleMusic` (🎵/⏸).
 
 ## Features map (JS functions)
 
-- Hero countdown → rideDates(), tickCountdown() — dates parsed from the
-  signup `ride_date` select (29 Sundays Apr 18–Oct 31 2027, 10:00 local).
+- No hero countdown — removed in `fb687ea`. Do not reintroduce it. The 29
+  ride Sundays (Apr 18–Oct 31 2027, 10:00 local) are static `<option>` values
+  in the signup `ride_date` select; nothing in JS parses them any more.
 - Clickable map stops → .map-stop[data-stop=N] ↔ .stop-card#stop-N, goStop(n).
 - Fish jump → .fish-scene onclick fishJump(event); type "fish" triggers it too.
 - Bike on route → .route-bike-wrap <animateMotion> on the dashed route path.
@@ -71,6 +72,9 @@ Key JS functions: `rideDates`, `tickCountdown` (countdown), `downloadICS`
 
 ## Notes / history
 
-Session work log & gotchas for prior sessions live in:
-`~/backups/monmouth-beer-crawl-session-notes-*.txt` (also good to re-read for
-context; this file is the canonical agent-facing summary).
+- `fb687ea` removed the hero countdown (`rideDates`, `tickCountdown`); `12dcf48`
+  before that removed the "todd" star badge from the hero. `315aeaf` fixed a
+  stale repo path here after the home-folder cleanup.
+- Session work log & gotchas for prior sessions live in:
+  `~/backups/monmouth-beer-crawl-session-notes-*.txt` (also good to re-read for
+  context; this file is the canonical agent-facing summary).
