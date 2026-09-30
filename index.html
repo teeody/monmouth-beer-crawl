@@ -116,18 +116,6 @@ body{
   font-weight:600;opacity:.8;margin-top:2px;
 }
 
-/* ════════════ COUNTDOWN ════════════ */
-.hero-count{
-  margin-top:26px;font-family:'Permanent Marker',cursive;
-  font-size:clamp(1.05rem,3.6vw,1.8rem);letter-spacing:1px;color:var(--gold-light);
-  animation:popIn .8s cubic-bezier(.17,.67,.35,1.5) .45s both;
-}
-.hero-count b{font-size:1.2em;color:#FFB347}
-.hero-count .cd-label{
-  display:block;font-size:.48em;letter-spacing:3px;text-transform:uppercase;
-  color:var(--cream-mid);opacity:.75;margin-bottom:6px;
-}
-
 /* ════════════ CURSOR WAVE ════════════ */
 .cursor-wave{
   position:fixed;top:0;left:0;width:170px;height:170px;border-radius:50%;
@@ -675,10 +663,6 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
       <div class="hero-stat"><div class="num">6</div><div class="label">Stops</div></div>
       <div class="hero-stat"><div class="num">4</div><div class="label">Dive Bars</div></div>
       <div class="hero-stat"><div class="num">2</div><div class="label">Breweries</div></div>
-    </div>
-    <div class="hero-count" id="rideCountdown">
-      <span class="cd-label">Next ride in</span>
-      <span id="cdValue">…</span>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="arrow"></div></div>
@@ -1318,39 +1302,6 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 });
 
 /* ─────────── bike crawl easter eggs & extras ─────────── */
-
-function rideDates(){
-  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const out = [];
-  document.querySelectorAll('select[name="ride_date"] option').forEach(function(o){
-    const m = o.value.match(/^Sun (\w{3}) (\d{1,2})$/);
-    if (!m) return;
-    const mi = months.findIndex(function(x){ return x.slice(0,3) === m[1]; });
-    if (mi !== -1) out.push(new Date(2027, mi, +m[2], 10, 0, 0));
-  });
-  return out;
-}
-let countTimer = null;
-function tickCountdown(){
-  const el = document.getElementById('cdValue');
-  const cd = document.getElementById('rideCountdown');
-  if (!el || !cd) return;
-  const now = new Date();
-  const next = rideDates().find(function(d){ return d > now; });
-  if (!next){
-    el.innerHTML = 'season&#39;s in the books — see you for <b>2028</b>';
-    cd.querySelector('.cd-label').textContent = 'Last weekend of riding';
-    clearInterval(countTimer);
-    return;
-  }
-  const diff = next - now;
-  const d = Math.floor(diff / 864e5), h = Math.floor(diff % 864e5 / 36e5);
-  const m = Math.floor(diff % 36e5 / 6e4), s = Math.floor(diff % 6e4 / 1e3);
-  cd.querySelector('.cd-label').textContent = 'Next ride — ' + next.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'}) + ' @ 10am';
-  el.innerHTML = '<b>' + d + '</b>d : <b>' + h + '</b>h : <b>' + m + '</b>m : <b>' + s + '</b>s';
-}
-countTimer = setInterval(tickCountdown, 1000);
-tickCountdown();
 
 function downloadICS(){
   const stamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
