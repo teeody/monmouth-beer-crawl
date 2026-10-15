@@ -66,9 +66,9 @@ stops), `pokeFish`/`fishJump`/`move` (fish, incl. cursor-following rAF loop),
 ## Design tokens (index.html CSS vars)
 
 - Font: Permanent Marker (Google Fonts), site-wide.
-- Colors: navy #1A5276 / ink #1A252F, sky gold #5DADE2 + #85C1E9, teal #17A2B8
-  (+ #20C997), coral #FF6B6B, amber #FFB347 / #E2A33C, cream #F0F4F8 /
-  #D6E4F0 / #B8CCE0.
+- Colors (fall theme): burgundy #8E251E / ink #3E2723, mustard #D4A017 +
+  #E6C85A, olive #6B8E23 / #8FBC8F, sienna #A0522D / #CD853F, burnt orange
+  #B5432E / #7B2C2C, warm parchment #FBF3E4 / #F5E6B8 / #E6CF8F.
 
 ## Notes / history
 
