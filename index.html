@@ -637,7 +637,9 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 @keyframes snow-fall{0%{transform:translateY(-10vh)}100%{transform:translateY(110vh)}}
 @keyframes snow-sway{0%,100%{margin-left:0}50%{margin-left:28px}}
 
-.holiday-ribbon{margin:14px auto 0;display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:repeating-linear-gradient(45deg,#B22234 0 12px,#fff 12px 24px,#165B33 24px 36px,#fff 36px 48px);color:#2B1D18;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.72rem;box-shadow:0 4px 0 rgba(43,29,24,.18);border:3px solid rgba(255,255,255,.7)}
+.holiday-ribbon{margin:14px auto 0;display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:repeating-linear-gradient(45deg,#B22234 0 12px,#fff 12px 24px,#165B33 24px 36px,#fff 36px 48px);color:#2B1D18;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.72rem;box-shadow:0 4px 0 rgba(43,29,24,.18);border:3px solid rgba(255,255,255,.7);text-decoration:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.holiday-ribbon:hover{transform:translateY(-1px) scale(1.02);box-shadow:0 6px 0 rgba(43,29,24,.18)}
+.holiday-ribbon:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
 .holiday-ribbon span{background:rgba(255,248,240,.92);padding:4px 10px;border-radius:999px}
 
 .section-heading .xmas-mini{font-size:.7em;vertical-align:middle}
@@ -699,7 +701,7 @@ footer .holiday-footer{margin-top:8px;font-size:.7rem;letter-spacing:2px;opacity
     </h1>
     <div class="hero-tagline">brought to you by todd</div>
     <div class="hero-subtitle">6 Stops · 28 Miles · 0 Accommodations</div>
-    <div class="holiday-ribbon"><span>🎅 Merry Christmas &amp; Happy Holidays 🎁</span></div>
+    <a class="holiday-ribbon" href="https://santatracker.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Google Santa Tracker"><span>🎅 Merry Christmas &amp; Happy Holidays 🎁</span></a>
 
     <div class="hero-stats">
       <div class="hero-stat"><div class="num">28</div><div class="label">Miles</div></div>
