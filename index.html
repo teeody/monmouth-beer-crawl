@@ -621,11 +621,50 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 /* ════════════ ANIMATIONS ════════════ */
 .fade-in{opacity:0;transform:translateY(24px);transition:all .6s cubic-bezier(.22,1,.36,1)}
 .fade-in.visible{opacity:1;transform:none}
+
+/* ════════════ XMAS_EXTRA_START ════════════ */
+.xmas-lights{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-around;align-items:flex-start;padding:0 8px;pointer-events:none;height:52px;overflow:visible}
+.xmas-lights span{width:12px;height:18px;border-radius:50% 50% 50% 50%;display:inline-block;position:relative;box-shadow:0 0 10px currentColor,0 0 20px currentColor;animation:twinkle 1.6s ease-in-out infinite alternate;transform-origin:top center}
+.xmas-lights span::before{content:'';position:absolute;top:-8px;left:50%;width:2px;height:8px;background:#6b6b6b;transform:translateX(-50%)}
+.xmas-lights span:nth-child(4n+1){color:#ff4d4d;background:#ff4d4d;animation-delay:0s}
+.xmas-lights span:nth-child(4n+2){color:#4dff88;background:#2ecc71;animation-delay:.3s}
+.xmas-lights span:nth-child(4n+3){color:#ffd54d;background:#f1c40f;animation-delay:.7s}
+.xmas-lights span:nth-child(4n+4){color:#6ecbff;background:#4aa3ff;animation-delay:1.1s}
+@keyframes twinkle{from{filter:brightness(.7);opacity:.7;transform:rotate(-4deg)}to{filter:brightness(1.4);opacity:1;transform:rotate(4deg)}}
+
+#snow-layer{position:fixed;inset:0;pointer-events:none;z-index:120;overflow:hidden}
+.snowflake{position:absolute;top:-10vh;color:#fff;text-shadow:0 0 6px rgba(255,255,255,.8);user-select:none;will-change:transform;animation-name:snow-fall,snow-sway;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite}
+@keyframes snow-fall{0%{transform:translateY(-10vh)}100%{transform:translateY(110vh)}}
+@keyframes snow-sway{0%,100%{margin-left:0}50%{margin-left:28px}}
+
+.holiday-ribbon{margin:14px auto 0;display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:repeating-linear-gradient(45deg,#B22234 0 12px,#fff 12px 24px,#165B33 24px 36px,#fff 36px 48px);color:#2B1D18;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.72rem;box-shadow:0 4px 0 rgba(43,29,24,.18);border:3px solid rgba(255,255,255,.7)}
+.holiday-ribbon span{background:rgba(255,248,240,.92);padding:4px 10px;border-radius:999px}
+
+.section-heading .xmas-mini{font-size:.7em;vertical-align:middle}
+.hero-subtitle{box-shadow:0 4px 0 rgba(43,29,24,.18);background:repeating-linear-gradient(90deg,var(--orange) 0 14px,var(--orange-light) 14px 28px)}
+.signup-form,.stop-card,.tip-card,.faq-item{position:relative}
+.stop-card::after{content:'❄';position:absolute;top:10px;right:14px;opacity:.18;font-size:1.1rem;pointer-events:none}
+.stop-card:hover::after{opacity:.35}
+.ics-btn,.submit-btn,.share-btn{border-image:none}
+.ics-btn{background-image:linear-gradient(135deg,rgba(178,34,52,.08),rgba(22,91,51,.08));}
+footer .footer-emoji{filter:drop-shadow(0 0 8px rgba(212,175,55,.35))}
+footer .holiday-footer{margin-top:8px;font-size:.7rem;letter-spacing:2px;opacity:.8}
+
+@media (prefers-reduced-motion: reduce){
+  .snowflake,.xmas-lights span{animation:none !important}
+  #snow-layer{display:none}
+}
+/* ════════════ XMAS_EXTRA_END ════════════ */
+
 </style>
 </head>
 <body>
 
-<button class="share-btn" onclick="openShare()" aria-label="Share this site">share with cool people</button>
+<!-- XMAS_EXTRA_START -->
+<div id="snow-layer" aria-hidden="true"></div>
+<!-- XMAS_EXTRA_END -->
+
+<button class="share-btn" onclick="openShare()" aria-label="Share this site">share holiday cheer</button>
 
 <div class="share-backdrop" id="shareBackdrop" onclick="closeShare()"></div>
 <div class="share-menu" id="shareMenu" role="dialog" aria-label="Share options">
@@ -652,6 +691,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
+  <div class="xmas-lights" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="hero-content">
     <div class="hero-badge">Monmouth County, NJ — Pints &amp; Pedals 2027 🎄 Holiday Edition</div>
     <h1>
@@ -659,6 +699,8 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
     </h1>
     <div class="hero-tagline">brought to you by todd</div>
     <div class="hero-subtitle">6 Stops · 28 Miles · 0 Accommodations</div>
+    <div class="holiday-ribbon"><span>🎅 Merry Christmas &amp; Happy Holidays 🎁</span></div>
+
     <div class="hero-stats">
       <div class="hero-stat"><div class="num">28</div><div class="label">Miles</div></div>
       <div class="hero-stat"><div class="num">6</div><div class="label">Stops</div></div>
@@ -959,7 +1001,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <!-- ═══════════════════ STOPS ═══════════════════ -->
 <section class="section" id="stops">
   <div class="section-eyebrow fade-in">The Stops</div>
-  <div class="section-heading fade-in">Every Pour on the Route</div>
+  <div class="section-heading fade-in">Every Pour on the Route <span class="xmas-mini">🎄</span></div>
   <div class="section-body fade-in">Dive bars, craft breweries, and a 184-year-old sports bar — all connected by the best bike-friendly roads in Monmouth County. A 28-mile loop from Oceanport down the coast to Bradley Beach, then inland to Red Bank and back. No spandex required.</div>
 
   <div class="stops-grid">
@@ -1080,7 +1122,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <section class="section" id="tips" style="background:var(--cream-mid);max-width:100%;padding-left:0;padding-right:0">
   <div style="max-width:1100px;margin:0 auto;padding:0 16px">
     <div class="section-eyebrow fade-in">Ride Notes</div>
-    <div class="section-heading fade-in">Before You Roll Out</div>
+    <div class="section-heading fade-in">Before You Roll Out <span class="xmas-mini">❄️</span></div>
     <div class="tips-grid">
       <div class="tip-card fade-in"><div class="tip-icon">🕐</div><h4>Best Time</h4><p>Start at Birdsmouth when they open at noon. You've got 28 miles ahead — hitting the first few bars early means less crowds and more barstools. The Globe in Red Bank is open until 2am, so you've got all afternoon and evening to pace yourself.</p></div>
       <div class="tip-card fade-in"><div class="tip-icon">🚲</div><h4>Trail Info</h4><p>Every leg has a bike-safe route — Ocean Ave has protected lanes in Long Branch, Route 71 has wide shoulders through Deal, Branch Ave has a dedicated bike lane, and Navesink River Rd is scenic and low-traffic for the final push to Red Bank. Click any route link for turn-by-turn directions.</p></div>
@@ -1099,7 +1141,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <section class="section" id="faq" style="background:var(--cream);max-width:100%;padding-left:0;padding-right:0">
   <div style="max-width:1100px;margin:0 auto;padding:0 16px">
     <div class="section-eyebrow fade-in">Got Questions?</div>
-    <div class="section-heading fade-in">Frequently Asked</div>
+    <div class="section-heading fade-in">Frequently Asked <span class="xmas-mini">🎁</span></div>
     <div class="faq-list">
       <div class="faq-item fade-in">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px'">What do I need to bring for the ride?<span class="faq-chevron">▼</span></button>
@@ -1209,7 +1251,7 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 <section class="section" id="honorable" style="background:var(--cream-mid);max-width:100%;padding-left:0;padding-right:0">
   <div style="max-width:1100px;margin:0 auto;padding:0 16px">
     <div class="section-eyebrow fade-in">Didn't Make the Cut (This Time)</div>
-    <div class="section-heading fade-in">Honorable Mentions</div>
+    <div class="section-heading fade-in">Honorable Mentions <span class="xmas-mini">⭐</span></div>
     <div class="section-body fade-in">These didn't make the tour this year but are all great choices — every single one worth a detour on its own.</div>
     <div class="mentions-grid fade-in">
       <a href="https://www.google.com/maps/search/The+Ark+Pub+Eatery+Point+Pleasant+NJ" target="_blank" rel="noopener" class="mention-link"><span class="mention-name">The Ark Pub & Eatery</span><span class="mention-loc">Point Pleasant Beach</span></a>
@@ -1230,8 +1272,9 @@ footer .footer-sub{font-size:.58rem;opacity:.4;margin-top:6px;font-weight:500}
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
-  <span class="footer-emoji">🍺</span>
+  <span class="footer-emoji">🎄🍺❄️</span>
   <p>Pints &amp; Pedals Bike Crawl — Monmouth County, NJ — 2027</p>
+  <p class="holiday-footer">Merry Christmas, Happy Holidays, and cheers to a festive ride season! 🎅🎁</p>
   <p class="footer-sub">Music: "Wave Rider" by Shane Ivers (silvermansound.com) — CC BY 4.0</p>
 </footer>
 
@@ -1274,7 +1317,7 @@ function copyShareLink(msg) {
     const btn = document.querySelector('.share-btn');
     btn.classList.add('copied');
     btn.textContent = msg || 'link copied!';
-    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = "share with cool people"; }, 2600);
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = "share holiday cheer"; }, 2600);
   }).catch(() => { prompt('Copy this link:', url); });
 }
 const bgm = document.getElementById('bgm');
@@ -1418,7 +1461,7 @@ document.querySelector('.share-btn').addEventListener('click', function(){
   if (shareClicks.length >= 5 && !starFired){
     starFired = true; setTimeout(function(){ starFired = false; }, 4000);
     const b = document.querySelector('.share-btn').getBoundingClientRect();
-    confettiBurst(b.left + b.width / 2, b.top + b.height / 2, ['#CD853F','#D4A017','#D4A017','#6B8E23','#B5432E','#FAFCFE']);
+    confettiBurst(b.left + b.width / 2, b.top + b.height / 2, ['#B22234','#165B33','#D4AF37','#FFFFFF','#2E8B57','#F2D16B']);
   }
 });
 
@@ -1440,6 +1483,55 @@ document.querySelector('.share-btn').addEventListener('click', function(){
   document.addEventListener('mouseleave', function(){ shown = false; w.style.opacity = 0; });
   addEventListener('touchstart', function(){ w.style.opacity = 0; shown = false; }, {passive:true});
 })();
+
+
+/* XMAS_EXTRA_START */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const layer = document.getElementById('snow-layer');
+  if (!layer) return;
+  const flakes = ['❄','❅','❆','✻','✼'];
+  const count = 42;
+  for (let i=0;i<count;i++){
+    const s = document.createElement('span');
+    s.className = 'snowflake';
+    s.textContent = flakes[Math.floor(Math.random()*flakes.length)];
+    const size = 10 + Math.random()*18;
+    const left = Math.random()*100;
+    const dur = 10 + Math.random()*14;
+    const delay = Math.random()*-20;
+    const sway = 3 + Math.random()*4;
+    s.style.left = left + 'vw';
+    s.style.fontSize = size + 'px';
+    s.style.opacity = (0.35 + Math.random()*0.55).toFixed(2);
+    s.style.animationDuration = dur + 's, ' + sway + 's';
+    s.style.animationDelay = delay + 's, ' + (Math.random()*4) + 's';
+    layer.appendChild(s);
+  }
+})();
+
+(function(){
+  window._xmasKeyBuf = window._xmasKeyBuf || '';
+  document.addEventListener('keydown', function(e){
+    if (!e.key || e.key.length !== 1 || e.ctrlKey || e.metaKey) return;
+    const k = ((window._xmasKeyBuf||'') + e.key).toLowerCase().slice(-12);
+    window._xmasKeyBuf = k;
+    if (Date.now() < (window._xmasKeyCd||0)) return;
+    if (k.endsWith('snow') || k.endsWith('santa') || k.endsWith('xmas')){
+      window._xmasKeyCd = Date.now() + 12000;
+      window._xmasKeyBuf = '';
+      if (typeof bikeRain === 'function') bikeRain(18);
+      for (let i=0;i<4;i++){
+        setTimeout(function(){
+          confettiBurst(innerWidth*(0.2+Math.random()*0.6), innerHeight*(0.2+Math.random()*0.4), ['#B22234','#165B33','#D4AF37','#FFFFFF']);
+        }, i*180);
+      }
+      const fs = document.querySelector('.fish-scene');
+      if (fs && typeof pokeFish === 'function') { pokeFish(); setTimeout(pokeFish, 500); }
+    }
+  });
+})();
+/* XMAS_EXTRA_END */
 
 document.getElementById('interestCount').textContent = Math.floor(Math.random() * (3456 - 43 + 1)) + 43;
 </script>
