@@ -235,6 +235,14 @@ body{
 }
 .music-btn:hover{background:var(--gold);border-color:var(--orange);transform:scale(1.1)}
 .music-btn.playing{animation:pulseBtn 2s ease-in-out infinite}
+.music-credit{
+  position:fixed;right:24px;bottom:82px;z-index:100;
+  max-width:min(320px,calc(100vw - 48px));
+  padding:8px 10px;border:3px solid var(--brown-mid);border-radius:10px;
+  background:rgba(255,248,237,.96);color:var(--brown);
+  font-size:.62rem;line-height:1.35;box-shadow:0 3px 0 var(--shadow);
+}
+.music-credit a{color:var(--orange);text-decoration:underline}
 @keyframes pulseBtn{0%,100%{box-shadow:0 4px 0 var(--shadow)}50%{box-shadow:0 4px 0 var(--shadow),0 0 20px var(--orange-glow)}}
 
 /* ════════════ PHOTO GALLERY ════════════ */
@@ -685,9 +693,10 @@ footer .holiday-footer{margin-top:8px;font-size:.7rem;letter-spacing:2px;opacity
 </div>
 
 <audio id="bgm" loop preload="auto">
-  <source src="wave-rider.mp3" type="audio/mpeg">
+  <source src="jingle-bells.mp3" type="audio/mpeg">
 </audio>
-<button class="music-btn" onclick="toggleMusic()" aria-label="Toggle music" title="Toggle music">🎵</button>
+<button class="music-btn" onclick="toggleMusic()" aria-label="Toggle holiday music" title="Toggle holiday music">🎵</button>
+<div class="music-credit" aria-label="Music credit">Music: "Jingle Bells" by Kevin MacLeod (<a href="https://incompetech.com/" target="_blank" rel="noopener noreferrer">incompetech.com</a>), CC BY 4.0</div>
 
 <div class="cursor-wave" id="cursorWave" aria-hidden="true"></div>
 
