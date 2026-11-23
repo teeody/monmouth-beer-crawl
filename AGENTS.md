@@ -1,7 +1,7 @@
 # AGENTS.md — Pints & Pedals Bike Crawl site
 
 Single-file static site (all CSS/HTML/JS inline). One real file: `index.html`,
-plus `photos/` and `wave-rider.mp3` (music).
+plus `photos/` and `jingle-bells.mp3` (music).
 
 - Live: https://teeody.github.io/monmouth-beer-crawl/ (GitHub Pages)
 - Remote: https://github.com/teeody/monmouth-beer-crawl.git
@@ -58,10 +58,10 @@ stops), `pokeFish`/`fishJump`/`move` (fish, incl. cursor-following rAF loop),
 - Bike on route → .route-bike-wrap <animateMotion> on the dashed route path.
 - Easter eggs → typing "pints" rains 🚴; 5 quick clicks on the share button
   fire confetti.
-- Music → wave-rider.mp3 ("Wave Rider" by Shane Ivers, silvermansound.com,
+- Music → jingle-bells.mp3 ("Jingle Bells" by Kevin MacLeod, incompetech.com,
   CC BY 4.0), bgm.volume = 0.3.
-- Music credit line in the footer: Music: "Wave Rider" by Shane Ivers
-  (silvermansound.com) — CC BY 4.0.
+- Music credit line in the footer: Music: "Jingle Bells" by Kevin MacLeod
+  (incompetech.com) — CC BY 4.0.
 
 ## Design tokens (index.html CSS vars)
 
